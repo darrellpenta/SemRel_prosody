@@ -1,0 +1,132 @@
+File type = "ooTextFile"
+Object class = "TextGrid"
+
+xmin = 0 
+xmax = 6.309659863945578 
+tiers? <exists> 
+size = 2 
+item []: 
+    item [1]:
+        class = "IntervalTier" 
+        name = "words" 
+        xmin = 0 
+        xmax = 6.309659863945578 
+        intervals: size = 14 
+        intervals [1]:
+            xmin = 0 
+            xmax = 0.9263886077699176 
+            text = "sil" 
+        intervals [2]:
+            xmin = 0.9263886077699176 
+            xmax = 0.9858309830014659 
+            text = "the" 
+        intervals [3]:
+            xmin = 0.9858309830014659 
+            xmax = 1.3458629900771333 
+            text = "resort" 
+        intervals [4]:
+            xmin = 1.3458629900771333 
+            xmax = 1.5093172599686302 
+            text = "near" 
+        intervals [5]:
+            xmin = 1.5093172599686302 
+            xmax = 1.6017265160764624 
+            text = "the" 
+        intervals [6]:
+            xmin = 1.6017265160764624 
+            xmax = 2.0033099058378467 
+            text = "elaborate" 
+        intervals [7]:
+            xmin = 2.0033099058378467 
+            xmax = 2.599157038900333 
+            text = "garden" 
+        intervals [8]:
+            xmin = 2.599157038900333 
+            xmax = 2.988236952639373 
+            text = "sil" 
+        intervals [9]:
+            xmin = 2.988236952639373 
+            xmax = 3.5009659445092716 
+            text = "had" 
+        intervals [10]:
+            xmin = 3.5009659445092716 
+            xmax = 4.143732800081584 
+            text = "sil" 
+        intervals [11]:
+            xmin = 4.143732800081584 
+            xmax = 4.3570228612286135 
+            text = "a" 
+        intervals [12]:
+            xmin = 4.3570228612286135 
+            xmax = 4.560307226650573 
+            text = "sil" 
+        intervals [13]:
+            xmin = 4.560307226650573 
+            xmax = 4.832580789770952 
+            text = "wide" 
+        intervals [14]:
+            xmin = 4.832580789770952 
+            xmax = 6.309659863945578 
+            text = "" 
+    item [2]:
+        class = "IntervalTier" 
+        name = "2" 
+        xmin = 0 
+        xmax = 6.309659863945578 
+        intervals: size = 14 
+        intervals [1]:
+            xmin = 0 
+            xmax = 0.9263886077699176 
+            text = "sil_#" 
+        intervals [2]:
+            xmin = 0.9263886077699176 
+            xmax = 0.9858309830014659 
+            text = "D1" 
+        intervals [3]:
+            xmin = 0.9858309830014659 
+            xmax = 1.3458629900771333 
+            text = "N1" 
+        intervals [4]:
+            xmin = 1.3458629900771333 
+            xmax = 1.5093172599686302 
+            text = "P1" 
+        intervals [5]:
+            xmin = 1.5093172599686302 
+            xmax = 1.6017265160764624 
+            text = "D2" 
+        intervals [6]:
+            xmin = 1.6017265160764624 
+            xmax = 2.0033099058378467 
+            text = "A1" 
+        intervals [7]:
+            xmin = 2.0033099058378467 
+            xmax = 2.599157038900333 
+            text = "N2" 
+        intervals [8]:
+            xmin = 2.599157038900333 
+            xmax = 2.988236952639373 
+            text = "sil_N2C1" 
+        intervals [9]:
+            xmin = 2.988236952639373 
+            xmax = 3.5009659445092716 
+            text = "C1" 
+        intervals [10]:
+            xmin = 3.5009659445092716 
+            xmax = 4.143732800081584 
+            text = "sil_C1C2" 
+        intervals [11]:
+            xmin = 4.143732800081584 
+            xmax = 4.3570228612286135 
+            text = "C2" 
+        intervals [12]:
+            xmin = 4.3570228612286135 
+            xmax = 4.560307226650573 
+            text = "sil_C2C3" 
+        intervals [13]:
+            xmin = 4.560307226650573 
+            xmax = 4.832580789770952 
+            text = "C3" 
+        intervals [14]:
+            xmin = 4.832580789770952 
+            xmax = 6.309659863945578 
+            text = "" 

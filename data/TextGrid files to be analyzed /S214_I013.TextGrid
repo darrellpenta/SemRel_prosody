@@ -1,0 +1,108 @@
+File type = "ooTextFile"
+Object class = "TextGrid"
+
+xmin = 0 
+xmax = 4.191882086167801 
+tiers? <exists> 
+size = 2 
+item []: 
+    item [1]:
+        class = "IntervalTier" 
+        name = "words" 
+        xmin = 0 
+        xmax = 4.191882086167801 
+        intervals: size = 11 
+        intervals [1]:
+            xmin = 0 
+            xmax = 0.4460172094337394 
+            text = "sil" 
+        intervals [2]:
+            xmin = 0.4460172094337394 
+            xmax = 0.5126579365920557 
+            text = "the" 
+        intervals [3]:
+            xmin = 0.5126579365920557 
+            xmax = 1.067049944875062 
+            text = "bicycle" 
+        intervals [4]:
+            xmin = 1.067049944875062 
+            xmax = 1.1912946918004572 
+            text = "with" 
+        intervals [5]:
+            xmin = 1.1912946918004572 
+            xmax = 1.2951910723891207 
+            text = "the" 
+        intervals [6]:
+            xmin = 1.2951910723891207 
+            xmax = 1.659595108758326 
+            text = "warped" 
+        intervals [7]:
+            xmin = 1.659595108758326 
+            xmax = 2.1827768535829244 
+            text = "tires" 
+        intervals [8]:
+            xmin = 2.1827768535829244 
+            xmax = 2.446370143641816 
+            text = "didn't" 
+        intervals [9]:
+            xmin = 2.446370143641816 
+            xmax = 2.6251684963285844 
+            text = "go" 
+        intervals [10]:
+            xmin = 2.6251684963285844 
+            xmax = 2.8800349391795326 
+            text = "very" 
+        intervals [11]:
+            xmin = 2.8800349391795326 
+            xmax = 4.191882086167801 
+            text = "" 
+    item [2]:
+        class = "IntervalTier" 
+        name = "2" 
+        xmin = 0 
+        xmax = 4.191882086167801 
+        intervals: size = 11 
+        intervals [1]:
+            xmin = 0 
+            xmax = 0.4460172094337394 
+            text = "sil_#" 
+        intervals [2]:
+            xmin = 0.4460172094337394 
+            xmax = 0.5126579365920557 
+            text = "D1" 
+        intervals [3]:
+            xmin = 0.5126579365920557 
+            xmax = 1.067049944875062 
+            text = "N1" 
+        intervals [4]:
+            xmin = 1.067049944875062 
+            xmax = 1.1912946918004572 
+            text = "P1" 
+        intervals [5]:
+            xmin = 1.1912946918004572 
+            xmax = 1.2951910723891207 
+            text = "D2" 
+        intervals [6]:
+            xmin = 1.2951910723891207 
+            xmax = 1.659595108758326 
+            text = "A1" 
+        intervals [7]:
+            xmin = 1.659595108758326 
+            xmax = 2.1827768535829244 
+            text = "N2" 
+        intervals [8]:
+            xmin = 2.1827768535829244 
+            xmax = 2.446370143641816 
+            text = "C1" 
+        intervals [9]:
+            xmin = 2.446370143641816 
+            xmax = 2.6251684963285844 
+            text = "C2" 
+        intervals [10]:
+            xmin = 2.6251684963285844 
+            xmax = 2.8800349391795326 
+            text = "C3" 
+        intervals [11]:
+            xmin = 2.8800349391795326 
+            xmax = 4.191882086167801 
+            text = "" 

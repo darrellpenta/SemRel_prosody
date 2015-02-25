@@ -1,0 +1,92 @@
+File type = "ooTextFile"
+Object class = "TextGrid"
+
+xmin = 0 
+xmax = 2.8410430839002268 
+tiers? <exists> 
+size = 2 
+item []: 
+    item [1]:
+        class = "IntervalTier" 
+        name = "words" 
+        xmin = 0 
+        xmax = 2.8410430839002268 
+        intervals: size = 9 
+        intervals [1]:
+            xmin = 0 
+            xmax = 0.5422634691607636 
+            text = "sil" 
+        intervals [2]:
+            xmin = 0.5422634691607636 
+            xmax = 0.6229583472042685 
+            text = "the" 
+        intervals [3]:
+            xmin = 0.6229583472042685 
+            xmax = 0.8308496375615668 
+            text = "tent" 
+        intervals [4]:
+            xmin = 0.8308496375615668 
+            xmax = 1.0130802310616243 
+            text = "with" 
+        intervals [5]:
+            xmin = 1.0130802310616243 
+            xmax = 1.0828448257733967 
+            text = "the" 
+        intervals [6]:
+            xmin = 1.0828448257733967 
+            xmax = 1.530610067222947 
+            text = "sturdy" 
+        intervals [7]:
+            xmin = 1.530610067222947 
+            xmax = 1.804628691025424 
+            text = "poles" 
+        intervals [8]:
+            xmin = 1.804628691025424 
+            xmax = 2.2992398433993184 
+            text = "broke" 
+        intervals [9]:
+            xmin = 2.2992398433993184 
+            xmax = 2.8410430839002268 
+            text = "" 
+    item [2]:
+        class = "IntervalTier" 
+        name = "2" 
+        xmin = 0 
+        xmax = 2.8410430839002268 
+        intervals: size = 9 
+        intervals [1]:
+            xmin = 0 
+            xmax = 0.5422634691607636 
+            text = "sil_#" 
+        intervals [2]:
+            xmin = 0.5422634691607636 
+            xmax = 0.6229583472042685 
+            text = "D1" 
+        intervals [3]:
+            xmin = 0.6229583472042685 
+            xmax = 0.8308496375615668 
+            text = "N1" 
+        intervals [4]:
+            xmin = 0.8308496375615668 
+            xmax = 1.0130802310616243 
+            text = "P1" 
+        intervals [5]:
+            xmin = 1.0130802310616243 
+            xmax = 1.0828448257733967 
+            text = "D2" 
+        intervals [6]:
+            xmin = 1.0828448257733967 
+            xmax = 1.530610067222947 
+            text = "A1" 
+        intervals [7]:
+            xmin = 1.530610067222947 
+            xmax = 1.804628691025424 
+            text = "N2" 
+        intervals [8]:
+            xmin = 1.804628691025424 
+            xmax = 2.2992398433993184 
+            text = "C1" 
+        intervals [9]:
+            xmin = 2.2992398433993184 
+            xmax = 2.8410430839002268 
+            text = "" 
