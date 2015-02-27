@@ -1,0 +1,124 @@
+File type = "ooTextFile"
+Object class = "TextGrid"
+
+xmin = 0 
+xmax = 5.3336507936507935 
+tiers? <exists> 
+size = 2 
+item []: 
+    item [1]:
+        class = "IntervalTier" 
+        name = "words" 
+        xmin = 0 
+        xmax = 5.3336507936507935 
+        intervals: size = 13 
+        intervals [1]:
+            xmin = 0 
+            xmax = 0.8265308752811585 
+            text = "sil" 
+        intervals [2]:
+            xmin = 0.8265308752811585 
+            xmax = 0.9764236789335287 
+            text = "the" 
+        intervals [3]:
+            xmin = 0.9764236789335287 
+            xmax = 1.3402390049179884 
+            text = "coach" 
+        intervals [4]:
+            xmin = 1.3402390049179884 
+            xmax = 2.056374382943 
+            text = "sil" 
+        intervals [5]:
+            xmin = 2.056374382943 
+            xmax = 2.2209065497978586 
+            text = "near" 
+        intervals [6]:
+            xmin = 2.2209065497978586 
+            xmax = 2.3188091784998677 
+            text = "the" 
+        intervals [7]:
+            xmin = 2.3188091784998677 
+            xmax = 2.8163070853235137 
+            text = "disciplined" 
+        intervals [8]:
+            xmin = 2.8163070853235137 
+            xmax = 3.388996168803828 
+            text = "athlete" 
+        intervals [9]:
+            xmin = 3.388996168803828 
+            xmax = 3.575593957019514 
+            text = "sil" 
+        intervals [10]:
+            xmin = 3.575593957019514 
+            xmax = 3.9091409044188126 
+            text = "yelled" 
+        intervals [11]:
+            xmin = 3.9091409044188126 
+            xmax = 4.009326493380767 
+            text = "a" 
+        intervals [12]:
+            xmin = 4.009326493380767 
+            xmax = 4.22053045383175 
+            text = "lot" 
+        intervals [13]:
+            xmin = 4.22053045383175 
+            xmax = 5.3336507936507935 
+            text = "" 
+    item [2]:
+        class = "IntervalTier" 
+        name = "2" 
+        xmin = 0 
+        xmax = 5.3336507936507935 
+        intervals: size = 13 
+        intervals [1]:
+            xmin = 0 
+            xmax = 0.8265308752811585 
+            text = "sil_#" 
+        intervals [2]:
+            xmin = 0.8265308752811585 
+            xmax = 0.9764236789335287 
+            text = "D1" 
+        intervals [3]:
+            xmin = 0.9764236789335287 
+            xmax = 1.3402390049179884 
+            text = "N1" 
+        intervals [4]:
+            xmin = 1.3402390049179884 
+            xmax = 2.056374382943 
+            text = "sil_N1P1" 
+        intervals [5]:
+            xmin = 2.056374382943 
+            xmax = 2.2209065497978586 
+            text = "P1" 
+        intervals [6]:
+            xmin = 2.2209065497978586 
+            xmax = 2.3188091784998677 
+            text = "D2" 
+        intervals [7]:
+            xmin = 2.3188091784998677 
+            xmax = 2.8163070853235137 
+            text = "A1" 
+        intervals [8]:
+            xmin = 2.8163070853235137 
+            xmax = 3.388996168803828 
+            text = "N2" 
+        intervals [9]:
+            xmin = 3.388996168803828 
+            xmax = 3.575593957019514 
+            text = "sil_N2C1" 
+        intervals [10]:
+            xmin = 3.575593957019514 
+            xmax = 3.9091409044188126 
+            text = "C1" 
+        intervals [11]:
+            xmin = 3.9091409044188126 
+            xmax = 4.009326493380767 
+            text = "C2" 
+        intervals [12]:
+            xmin = 4.009326493380767 
+            xmax = 4.22053045383175 
+            text = "C3" 
+        intervals [13]:
+            xmin = 4.22053045383175 
+            xmax = 5.3336507936507935 
+            text = "" 
