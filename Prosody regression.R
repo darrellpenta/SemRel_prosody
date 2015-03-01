@@ -1,0 +1,72 @@
+#DP 2/289/2014 BEGAN WRITING SCRIPT; not working
+library(package = languageR)
+library(package = lme4)
+library(package = lmerTest)
+# source(file = "makedys.R")
+rm(list=ls())
+#------------------------------SET UP INPUT FILE(S)----------------------------
+d <- read.csv("data/allregdata.csv")
+View(d)
+association <- read.table("data/association.csv", header=TRUE, quote="\"")
+d <- cbind(d, association) # binds the data file and the association file
+f1 <- read.csv("data/f1_critical items.csv")
+df1<-merge(d,f1, by = "text")
+df1$subject <- as.factor(df1$subject)
+d <- df1
+write.csv(d, file = "output/by_subjects_all_data.csv" )
+#----------------------------script for makedys
+make.dys <<- function(colvals) {
+  err.cols <<- c("subject", "maincode")  # creates a vector of these colums
+  col.vals <<- colvals  # renames the argument (probably an unneccessary step at this point)
+  d.dys <<- d[ ,c(col.vals, err.cols)]
+}
+#------------------------------SET UP OUTPUT FILE------------------------------
+sink("output/F2 ELW Regression (subjects ).txt")
+cat("__________________________ANALYSES OF SUBJECTS RUN ON:", format(Sys.time(), "%b. %d, %Y at %T"), sep = "", fill=80)
+
+
+
+#--------------------PREPARE PREDICTOR VARIABLES FOR MODEL---------------------
+# Below, the separate measures for each of the predictors are combined, centered, and scaled to minimize conlinearity where relevent (i.e., all but plausibiltiy and association), and values are added to new columns
+
+d$len.char <- rowSums(d[ ,c("LengthChar.Head","LengthChar.Prep","LengthChar.Adj","LengthChar.Noun")])  # totals char. length measures
+d$len.char <- scale(d$len.char, center=TRUE, scale=TRUE)
+d$len.phon <- rowSums(d[ ,c("LengthPhon.Head","LengthPhon.Prep","LengthPhon.Adj","LengthPhon.Noun")])  # totals phon. length measures
+d$len.phon <- scale(d$len.phon, center=TRUE, scale=TRUE)
+d$len.syll <- rowSums(d[ ,c("LengthSylHead","LengthSyll.Prep","LengthSyll.Adj","LengthSyll.Noun")])  # totals syll. length measures
+d$len.syll <- scale(d$len.syll, center=TRUE, scale=TRUE)
+d$lf.head <- scale(d$LogFr.Head, center=TRUE, scale=TRUE)
+d$lf.prep <- scale(d$LogFreq.Prep, center=TRUE, scale=TRUE)
+d$lf.adj <- scale(d$LogFreq.Adj, center=TRUE, scale=TRUE)
+d$lf.noun <- scale(d$LogFreq.N1, center=TRUE, scale=TRUE)
+d$rel.hl <- scale(d$RelatedHL, center=TRUE, scale=TRUE)  # "hl" = head to local
+d$rel.lh <- scale(d$RelatedLH, center=TRUE, scale=TRUE)  # "lh" = local to head
+d$integ <- scale(d$Integrated, center=TRUE, scale=TRUE)
+d$asso <- d$AssArc.H.L
+d$plaus <- d$Plausibility
+# COMMENT THIS OUT OR REMOVE
+write.csv(d.dys, file = "output/by_subjects_all_data.csv" )
+make.dys(c("len.char", "len.phon", "len.syll", "lf.head", "lf.prep", "lf.adj", "lf.noun", "rel.hl", "rel.lh", "integ", "asso", "plaus"))
+
+
+#---------------------------CREATE AND COMPARE MODELS--------------------------
+
+# Full model
+elogr.subj.dys <- lmer(maincode ~ len.char + len.phon + len.syll + lf.head + lf.prep + lf.adj + lf.noun + rel.lh + rel.hl * integ  + asso + plaus + (1|subject), data = d.dys, REML=FALSE)
+print(summary(elogr.subj.dys))
+
+# Model with no character length
+no.len.char <- lmer(maincode ~ len.phon + len.syll + lf.head + lf.prep + lf.adj + lf.noun + rel.lh + rel.hl * integ  + asso + plaus + (1|subject), data = d.dys,  REML=FALSE)
+print(summary(elogr.subj.dys))
+step(elogr.subj.dys)
+# Model comparison
+cat("__________________________ANOVA______________________________", fill=80)
+anova(no.len.char, elogr.subj.dys)
+
+# Stepwise analysis (NOTE REDUCED RANDOM EFFECTS)
+# cat("__________________________STEP______________________________", fill=80)
+# elogr.item.dys <- lmer(elog ~ len.char + len.phon + len.syll + lf.head + lf.prep + lf.adj + lf.noun + rel.lh + rel.hl * integ  + asso + plaus + (1 |item), data = d.dys, weights = (1/v), REML=TRUE)
+#
+sink()
+
+
