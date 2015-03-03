@@ -1,25 +1,15 @@
 #DP 2/289/2014 BEGAN WRITING SCRIPT; not working
-library(package = languageR)
-library(package = lme4)
-library(package = lmerTest)
+
 # source(file = "makedys.R")
 rm(list=ls())
 #------------------------------SET UP INPUT FILE(S)----------------------------
-d <- read.csv("data/allregdata.csv")
+d <- ("data/duration_data.txt")
 View(d)
 association <- read.table("data/association.csv", header=TRUE, quote="\"")
 d <- cbind(d, association) # binds the data file and the association file
 f1 <- read.csv("data/f1_critical items.csv")
-df1<-merge(d,f1, by = "text")
-df1$subject <- as.factor(df1$subject)
-d <- df1
 write.csv(d, file = "output/by_subjects_all_data.csv" )
-#----------------------------script for makedys
-make.dys <<- function(colvals) {
-  err.cols <<- c("subject", "maincode")  # creates a vector of these colums
-  col.vals <<- colvals  # renames the argument (probably an unneccessary step at this point)
-  d.dys <<- d[ ,c(col.vals, err.cols)]
-}
+
 #------------------------------SET UP OUTPUT FILE------------------------------
 sink("output/F2 ELW Regression (subjects ).txt")
 cat("__________________________ANALYSES OF SUBJECTS RUN ON:", format(Sys.time(), "%b. %d, %Y at %T"), sep = "", fill=80)
@@ -45,7 +35,7 @@ d$integ <- scale(d$Integrated, center=TRUE, scale=TRUE)
 d$asso <- d$AssArc.H.L
 d$plaus <- d$Plausibility
 # COMMENT THIS OUT OR REMOVE
-write.csv(d.dys, file = "output/by_subjects_all_data.csv" )
+write.csv(actual, file = "output/prosody_items_both.csv" )
 make.dys(c("len.char", "len.phon", "len.syll", "lf.head", "lf.prep", "lf.adj", "lf.noun", "rel.hl", "rel.lh", "integ", "asso", "plaus"))
 
 
@@ -68,5 +58,6 @@ anova(no.len.char, elogr.subj.dys)
 # elogr.item.dys <- lmer(elog ~ len.char + len.phon + len.syll + lf.head + lf.prep + lf.adj + lf.noun + rel.lh + rel.hl * integ  + asso + plaus + (1 |item), data = d.dys, weights = (1/v), REML=TRUE)
 #
 sink()
+
 
 
