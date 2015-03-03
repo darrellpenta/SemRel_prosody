@@ -1,14 +1,37 @@
 #DP 2/289/2014 BEGAN WRITING SCRIPT; not working
 
-# source(file = "makedys.R")
 rm(list=ls())
-#------------------------------SET UP INPUT FILE(S)----------------------------
-d <- ("data/duration_data.txt")
+
+
+# ------------------------------SET UP INPUT FILE(S)----------------------------
+
+d <- read.csv("data/duration_data.csv")
 View(d)
-association <- read.table("data/association.csv", header=TRUE, quote="\"")
-d <- cbind(d, association) # binds the data file and the association file
-f1 <- read.csv("data/f1_critical items.csv")
-write.csv(d, file = "output/by_subjects_all_data.csv" )
+d.val <- read.csv("data/prosody_items_original.csv")
+
+# ----------------------------------------------------
+
+
+d$preamb.word <- "NA"
+
+preamb.word <-
+  for (i in d$word){
+    if (length(subtlex[subtlex$Word==i, 7]) == 0){
+      data[data$word==i,12] <- 0}
+    else {
+      data[data$word==i,12] <- subtlex[subtlex$Word==i, 7]
+    }
+  }
+# data = the datafile you want to import into
+# subtlex is the Subtitlexus large excel sheet that has been imported into R
+#word = a column in data that has the word you're looking up a value for written in lowercase
+#
+# the numbers 7 and 12 listed here are the column #s that the script looks up the value in and what column in data it replaces the value for
+#
+# 7 = column in SUBTlexus that has the frequency info
+# 12 = column that you are filling in for the data file
+
+# write.csv(d, file = "output/by_subjects_all_data.csv" )
 
 #------------------------------SET UP OUTPUT FILE------------------------------
 sink("output/F2 ELW Regression (subjects ).txt")
