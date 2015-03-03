@@ -1,0 +1,20 @@
+data$newcolumn<- "NA"
+
+newcolumn<-
+for (i in data$word){
+	if (length(subtlex[subtlex$Word==i, 7]) == 0){
+		data[data$word==i,12] <- 0}
+		else {
+			data[data$word==i,12] <- subtlex[subtlex$Word==i, 7]
+			}
+			}
+
+
+# data = the datafile you want to import into
+# subtlex is the Subtitlexus large excel sheet that has been imported into R
+#word = a column in data that has the word you're looking up a value for written in lowercase
+
+the numbers 7 and 12 listed here are the column #s that the script looks up the value in and what column in data it replaces the value for
+
+7 = column in SUBTlexus that has the frequency info
+12 = column that you are filling in for the data file 
