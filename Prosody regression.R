@@ -8,6 +8,8 @@ rm(list=ls())
 d <- read.csv("data/duration_data.csv")
 View(d)
 d.val <- read.csv("data/prosody_items_original.csv")
+dvalm<-melt(d.val, id.vars = "subitem", na.rm = TRUE)
+
 
 # ----------------------------------------------------
 
