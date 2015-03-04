@@ -1,6 +1,10 @@
 #DP 2/289/2014 BEGAN WRITING SCRIPT; not working
 
 rm(list=ls())
+library(tidyr)
+library(dplyr)
+library(reshape2)
+
 
 
 # ------------------------------SET UP INPUT FILE(S)----------------------------
@@ -8,10 +12,16 @@ rm(list=ls())
 d <- read.csv("data/duration_data.csv")
 View(d)
 d.val <- read.csv("data/prosody_items_original.csv")
-dvalm<-melt(d.val, id.vars = "subitem", na.rm = TRUE)
 
+View(d.val)
 
 # ----------------------------------------------------
+
+d.word <- d.val[,c("subitem","D1","N1","P1","D2","A1","N2","C1","C2","C3","C4","C5")] #SUBSET OF MAIN SHEET
+test<-melt(d.word, id.vars=1) #create melted version of data
+test$test<-NA
+test$test<-paste(test[,1],test[,2],sep="-") #concatenate string
+d <-left_join(d,test, by="test") #join b to ad
 
 
 d$preamb.word <- "NA"
