@@ -1,7 +1,6 @@
 #DP 2/289/2014 BEGAN WRITING SCRIPT; not working
 
 rm(list=ls())
-library(tidyr)
 library(dplyr)
 library(reshape2)
 
@@ -9,41 +8,71 @@ library(reshape2)
 
 # ------------------------------SET UP INPUT FILE(S)----------------------------
 
-d <- read.csv("data/duration_data.csv")
-View(d)
-d.val <- read.csv("data/prosody_items_original.csv")
-
-View(d.val)
 
 # ----------------------------------------------------
 
-d.word <- d.val[,c("subitem","D1","N1","P1","D2","A1","N2","C1","C2","C3","C4","C5")] #SUBSET OF MAIN SHEET
-test<-melt(d.word, id.vars=1) #create melted version of data
-test$test<-NA
-test$test<-paste(test[,1],test[,2],sep="-") #concatenate string
-d <-left_join(d,test, by="test") #join b to ad
+# d.word <- d.val[,c("subitem","D1","N1","P1","D2","A1","N2","C1","C2","C3","C4","C5")] #SUBSET OF MAIN SHEET
+# test<-melt(d.word, id.vars=1) #create melted version of data
+# test$test<-NA
+# test$test<-paste(test[,1],test[,2],sep="-") #concatenate string
+# d <-left_join(d,test, by="test") #join b to ad
+#  --------
 
+d.phon <- d.val[,c(1,20:24)]
+d.phon$LengthSylHead = NULL
+d.phonm <-melt(d.phon, id.vars=1)
+d <- read.csv("data/d_words.csv")
+View(d)
+d.val <- read.csv("data/prosody_items_original.csv")
+View(d.val)
+subtlex <- read.csv("data/subtlex.csv")
+View(subtlex)
+d.backup<-d
+d$word <- sapply(d$word, as.character)
+d$word[is.na(d$word)] <- " "
+as.data.frame(d$word)
+d$word<-tolower(d$word)
 
-d$preamb.word <- "NA"
+# ---populates column with freq. values----
+d$freq<- "NA"
+d$freq <- sapply(d$freq, as.character)
+d$freq[is.na(d$freq)] <- " "
+as.data.frame(d$freq)
 
-preamb.word <-
-  for (i in d$word){
-    if (length(subtlex[subtlex$Word==i, 7]) == 0){
-      data[data$word==i,12] <- 0}
-    else {
-      data[data$word==i,12] <- subtlex[subtlex$Word==i, 7]
+freq <-
+  for (i in d$word) {
+    if(length(subtlex[subtlex$Word == i, 7]) == 0) {
+    d[d$word == i, 9] <- 0
+}  else {
+    d[d$word == i,9] <- subtlex[subtlex$Word ==i, 7]
+  }
+}
+
+# ------
+
+d$len.char <- NA
+d$len.char <- nchar(d$word)
+
+# -----
+
+d$len.phon <- "NA"
+d$len.phon <- sapply(d$len.phon, as.character)
+d$len.phon[is.na(d$len.phon)] <- " "
+as.data.frame(d$len.phon)
+
+len.phon <-
+  for (i in d$word) {
+    if(length(subtlex[subtlex$Word == i, 7]) == 0) {
+      d[d$word == i, 9] <- 0
+    }  else {
+      d[d$word == i,9] <- subtlex[subtlex$Word ==i, 7]
     }
   }
-# data = the datafile you want to import into
-# subtlex is the Subtitlexus large excel sheet that has been imported into R
-#word = a column in data that has the word you're looking up a value for written in lowercase
-#
-# the numbers 7 and 12 listed here are the column #s that the script looks up the value in and what column in data it replaces the value for
-#
-# 7 = column in SUBTlexus that has the frequency info
-# 12 = column that you are filling in for the data file
 
-# write.csv(d, file = "output/by_subjects_all_data.csv" )
+
+#20 head
+#21 prep
+#22
 
 #------------------------------SET UP OUTPUT FILE------------------------------
 sink("output/F2 ELW Regression (subjects ).txt")
