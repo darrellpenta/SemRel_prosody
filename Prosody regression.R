@@ -10,13 +10,28 @@ library(reshape2)
 
 
 # ----------------------------------------------------
+d.val$LengthPhon.Det <-2
+d.len.phon <- d.val[,c("subitem","LengthPhon.Det","LengthPhon.Head","LengthPhon.Prep","LengthPhon.Adj","LengthPhon.Det","LengthPhon.Noun")] #SUBSET OF MAIN SHEET
+d.len.phon<-melt(d.len.phon, id.vars=1) #create melted version of data
+View(d.len.phon)
+d.len.phon$test<-NA
+d.len.phon$test<-rep(c("D1","N1","P1","A1","D2","N2"), each = 698)
+d.len.phon$unique.id <- paste(d.len.phon[,1],d.len.phon[,4],sep="-") #concatenate string
+d <-left_join(d,d.len.phon, by="unique.id") #join b to ad
+# ----------------------------------------------------
+d.val$Length.Syl.Det <-1
+d.len.syll <- d.val[,c(1,68,24:25,68,26:27)] #SUBSET OF MAIN SHEET
+View(d.len.syll)
+d.len.syll<-melt(d.len.syll, id.vars=1) #create melted version of data
+View(d.len.syll)
+d.len.syll$test<-NA
+d.len.syll$test<-rep(c("D1","N1","P1","A1","D2","N2"), each = 698)
+d.len.syll$unique.id <- paste(d.len.syll[,1],d.len.syll[,4],sep="-") #concatenate string
+names(d)[names(d)=="value"] <- "len.syll"
+d.len.syll$test = NULL
+d.len.syll$variable = NULL
+d <-left_join(d,d.len.syll, by="unique.id") #join b to ad
 
-# d.word <- d.val[,c("subitem","D1","N1","P1","D2","A1","N2","C1","C2","C3","C4","C5")] #SUBSET OF MAIN SHEET
-# test<-melt(d.word, id.vars=1) #create melted version of data
-# test$test<-NA
-# test$test<-paste(test[,1],test[,2],sep="-") #concatenate string
-# d <-left_join(d,test, by="test") #join b to ad
-#  --------
 
 d.phon <- d.val[,c(1,20:24)]
 d.phon$LengthSylHead = NULL
@@ -44,7 +59,7 @@ freq <-
     if(length(subtlex[subtlex$Word == i, 7]) == 0) {
     d[d$word == i, 9] <- 0
 }  else {
-    d[d$word == i,9] <- subtlex[subtlex$Word ==i, 7]
+    d[d$word == i, 9] <- subtlex[subtlex$Word ==i, 7]
   }
 }
 
@@ -60,16 +75,17 @@ d$len.phon <- sapply(d$len.phon, as.character)
 d$len.phon[is.na(d$len.phon)] <- " "
 as.data.frame(d$len.phon)
 
-len.phon <-
+freq <-
   for (i in d$word) {
     if(length(subtlex[subtlex$Word == i, 7]) == 0) {
       d[d$word == i, 9] <- 0
     }  else {
-      d[d$word == i,9] <- subtlex[subtlex$Word ==i, 7]
+      d[d$word == i, 9] <- subtlex[subtlex$Word ==i, 7]
     }
   }
 
-
+#5 is work type
+#10 is phon
 #20 head
 #21 prep
 #22
