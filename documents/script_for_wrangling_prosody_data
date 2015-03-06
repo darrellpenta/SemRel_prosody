@@ -1,9 +1,9 @@
-# library(dplyr)
-# library(reshape2)
+library(dplyr)
+library(reshape2)
 
 
 
-d <- read.csv("output/d_prosody.csv")
+d <- read.csv("data/d_prosody.csv")
 View(d)
 d.val <- read.csv("data/prosody_items_original.csv")
 View(d.val)
