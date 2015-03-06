@@ -1,6 +1,44 @@
   
-SEMREL PROSODY ANALYSES RUN ON: Mar. 06, 2015 at 11:55:55
+SEMREL PROSODY ANALYSES RUN ON: Mar. 06, 2015 at 15:19:58
   
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+SUBSET D1
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+Linear mixed model fit by maximum likelihood  
+t-tests use  Satterthwaite approximations to degrees of freedom ['merModLmerTest']
+Formula: seconds ~ relat + integ + assoc + plaus + (1 | subject) + (1 |      item)
+   Data: d.d1
+
+     AIC      BIC   logLik deviance df.resid 
+ -3104.5  -3068.1   1560.2  -3120.5      690 
+
+Scaled residuals: 
+    Min      1Q  Median      3Q     Max 
+-2.6308 -0.5754 -0.1268  0.5043 10.0237 
+
+Random effects:
+ Groups   Name        Variance  Std.Dev.
+ subject  (Intercept) 9.244e-05 0.009615
+ item     (Intercept) 2.364e-04 0.015374
+ Residual             5.736e-04 0.023949
+Number of obs: 698, groups:  subject, 32; item, 24
+
+Fixed effects:
+              Estimate Std. Error         df t value Pr(>|t|)    
+(Intercept)  8.922e-02  3.722e-03  3.630e+01  23.972   <2e-16 ***
+relat        2.308e-03  1.760e-03  6.676e+02   1.311   0.1902    
+integ       -8.244e-04  1.714e-03  6.625e+02  -0.481   0.6306    
+assoc       -7.681e-03  4.219e-03  6.846e+02  -1.821   0.0691 .  
+plaus       -3.981e-04  1.365e-03  6.753e+02  -0.292   0.7706    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Correlation of Fixed Effects:
+      (Intr) relat  integ  assoc 
+relat  0.035                     
+integ  0.009 -0.697              
+assoc -0.144 -0.252 -0.050       
+plaus -0.001 -0.115 -0.309 -0.006
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 SUBSET N1
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
@@ -47,3 +85,189 @@ relat     0.045 -0.039  0.029 -0.016 -0.050
 integ    -0.031  0.034  0.011 -0.015  0.030 -0.698              
 assoc    -0.057  0.027 -0.023  0.053 -0.022 -0.254 -0.048       
 plaus     0.059 -0.061 -0.060  0.038  0.014 -0.115 -0.308 -0.006
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+SUBSET P1
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+Linear mixed model fit by maximum likelihood  
+t-tests use  Satterthwaite approximations to degrees of freedom ['merModLmerTest']
+Formula: seconds ~ freq + len.char + len.phon + relat + integ + assoc +      plaus + (1 | subject) + (1 | item)
+   Data: d.p1
+
+     AIC      BIC   logLik deviance df.resid 
+ -2901.8  -2851.8   1461.9  -2923.8      687 
+
+Scaled residuals: 
+    Min      1Q  Median      3Q     Max 
+-2.5562 -0.5580 -0.0739  0.4368 10.4803 
+
+Random effects:
+ Groups   Name        Variance  Std.Dev.
+ subject  (Intercept) 0.0003197 0.01788 
+ item     (Intercept) 0.0001727 0.01314 
+ Residual             0.0007453 0.02730 
+Number of obs: 698, groups:  subject, 32; item, 24
+
+Fixed effects:
+              Estimate Std. Error         df t value Pr(>|t|)    
+(Intercept)   0.253733   0.012162 618.300000  20.863  < 2e-16 ***
+freq         -0.020487   0.002385 670.700000  -8.588  < 2e-16 ***
+len.char     -0.013748   0.003335 506.100000  -4.122 4.38e-05 ***
+len.phon      0.007174   0.002881 575.000000   2.490   0.0131 *  
+relat         0.004506   0.002775 672.700000   1.624   0.1049    
+integ        -0.004355   0.003008 670.700000  -1.448   0.1481    
+assoc         0.002574   0.004793 671.400000   0.537   0.5915    
+plaus        -0.001425   0.001583 577.800000  -0.900   0.3685    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Correlation of Fixed Effects:
+         (Intr) freq   ln.chr ln.phn relat  integ  assoc 
+freq     -0.935                                          
+len.char -0.521  0.558                                   
+len.phon  0.404 -0.434 -0.867                            
+relat    -0.569  0.617  0.178  0.004                     
+integ     0.610 -0.649 -0.129 -0.070 -0.852              
+assoc    -0.104  0.058  0.040 -0.019 -0.141 -0.076       
+plaus     0.134 -0.144 -0.240  0.236 -0.117 -0.168 -0.011
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+SUBSET D2
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+Linear mixed model fit by maximum likelihood  
+t-tests use  Satterthwaite approximations to degrees of freedom ['merModLmerTest']
+Formula: seconds ~ relat + integ + assoc + plaus + (1 | subject) + (1 |      item)
+   Data: d.d2
+
+     AIC      BIC   logLik deviance df.resid 
+ -3178.6  -3142.3   1597.3  -3194.6      690 
+
+Scaled residuals: 
+    Min      1Q  Median      3Q     Max 
+-2.3875 -0.5400 -0.1221  0.3709  7.1297 
+
+Random effects:
+ Groups   Name        Variance  Std.Dev.
+ subject  (Intercept) 7.048e-05 0.008395
+ item     (Intercept) 1.436e-04 0.011982
+ Residual             5.256e-04 0.022926
+Number of obs: 698, groups:  subject, 32; item, 24
+
+Fixed effects:
+              Estimate Std. Error         df t value Pr(>|t|)    
+(Intercept)   0.096282   0.003033  37.400000  31.741  < 2e-16 ***
+relat         0.005262   0.001678 672.900000   3.136  0.00179 ** 
+integ        -0.004079   0.001635 667.300000  -2.494  0.01285 *  
+assoc        -0.007047   0.004007 685.700000  -1.759  0.07910 .  
+plaus        -0.001267   0.001290 650.900000  -0.982  0.32624    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Correlation of Fixed Effects:
+      (Intr) relat  integ  assoc 
+relat  0.040                     
+integ  0.011 -0.698              
+assoc -0.167 -0.250 -0.051       
+plaus -0.001 -0.114 -0.305 -0.006
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+SUBSET A1
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+Linear mixed model fit by maximum likelihood  
+t-tests use  Satterthwaite approximations to degrees of freedom ['merModLmerTest']
+Formula: seconds ~ freq + len.char + len.phon + len.syll + relat + integ +      assoc + plaus + (1 | subject) + (1 | item)
+   Data: d.a1
+
+     AIC      BIC   logLik deviance df.resid 
+ -1756.1  -1701.5    890.0  -1780.1      686 
+
+Scaled residuals: 
+    Min      1Q  Median      3Q     Max 
+-3.7726 -0.5930 -0.0906  0.4445  6.8188 
+
+Random effects:
+ Groups   Name        Variance Std.Dev.
+ subject  (Intercept) 0.001907 0.04366 
+ item     (Intercept) 0.002650 0.05148 
+ Residual             0.003675 0.06062 
+Number of obs: 698, groups:  subject, 32; item, 24
+
+Fixed effects:
+              Estimate Std. Error         df t value Pr(>|t|)    
+(Intercept)   0.503353   0.023268  86.700000  21.633  < 2e-16 ***
+freq         -0.026896   0.007994 147.300000  -3.365 0.000977 ***
+len.char     -0.013575   0.011818 105.500000  -1.149 0.253269    
+len.phon      0.095321   0.019285  74.400000   4.943 4.62e-06 ***
+len.syll     -0.008298   0.018115  43.400000  -0.458 0.649188    
+relat         0.001054   0.004662 669.000000   0.226 0.821209    
+integ        -0.004587   0.004384 656.000000  -1.046 0.295802    
+assoc        -0.012485   0.011108 670.400000  -1.124 0.261449    
+plaus         0.004101   0.003586 671.900000   1.144 0.253103    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Correlation of Fixed Effects:
+         (Intr) freq   ln.chr ln.phn ln.syl relat  integ  assoc 
+freq     -0.820                                                 
+len.char  0.111 -0.145                                          
+len.phon -0.184  0.224 -0.550                                   
+len.syll  0.057 -0.074  0.039 -0.692                            
+relat    -0.040  0.066  0.160 -0.245  0.162                     
+integ     0.026 -0.027 -0.095  0.023  0.044 -0.677              
+assoc    -0.247  0.231 -0.007  0.037 -0.013 -0.219 -0.056       
+plaus     0.048 -0.059 -0.076  0.168 -0.170 -0.163 -0.301 -0.020
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+SUBSET N2
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+Linear mixed model fit by maximum likelihood  
+t-tests use  Satterthwaite approximations to degrees of freedom ['merModLmerTest']
+Formula: seconds ~ freq + len.char + len.phon + len.syll + relat + integ +      assoc + plaus + (1 | subject) + (1 | item)
+   Data: d.n2
+
+     AIC      BIC   logLik deviance df.resid 
+  -907.2   -852.6    465.6   -931.2      684 
+
+Scaled residuals: 
+    Min      1Q  Median      3Q     Max 
+-3.5699 -0.6732  0.0030  0.6022  3.6225 
+
+Random effects:
+ Groups   Name        Variance Std.Dev.
+ subject  (Intercept) 0.011628 0.10784 
+ item     (Intercept) 0.001243 0.03525 
+ Residual             0.012785 0.11307 
+Number of obs: 696, groups:  subject, 32; item, 24
+
+Fixed effects:
+              Estimate Std. Error         df t value Pr(>|t|)    
+(Intercept)   0.573043   0.027588 108.900000  20.771  < 2e-16 ***
+freq          0.001333   0.007843 515.900000   0.170  0.86513    
+len.char      0.032400   0.015710 176.200000   2.062  0.04064 *  
+len.phon      0.095598   0.019424 248.600000   4.922 1.56e-06 ***
+len.syll     -0.037636   0.011708 361.500000  -3.215  0.00142 ** 
+relat        -0.012380   0.008463 656.900000  -1.463  0.14401    
+integ         0.010378   0.008066 664.200000   1.287  0.19864    
+assoc        -0.026785   0.021305 510.600000  -1.257  0.20925    
+plaus        -0.016581   0.006167 441.300000  -2.689  0.00744 ** 
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Correlation of Fixed Effects:
+         (Intr) freq   ln.chr ln.phn ln.syl relat  integ  assoc 
+freq     -0.650                                                 
+len.char  0.087 -0.116                                          
+len.phon -0.179  0.253 -0.836                                   
+len.syll  0.061 -0.075  0.131 -0.560                            
+relat    -0.066  0.139  0.070 -0.091  0.176                     
+integ    -0.001  0.011 -0.075  0.077  0.024 -0.660              
+assoc     0.161 -0.378 -0.073  0.043 -0.101 -0.308 -0.055       
+plaus     0.078 -0.122  0.047 -0.082  0.052 -0.121 -0.294  0.041
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+CORRELATION MATRIX
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+                  freq len.char len.phon  len.syll   related integrated plausibility association
+freq          1.000000 -0.78199 -0.81939 -0.684903  0.005807    0.03754     0.041212     0.01239
+len.char     -0.781994  1.00000  0.95189  0.866896 -0.046316   -0.04243     0.020669    -0.05227
+len.phon     -0.819387  0.95189  1.00000  0.904538 -0.031109   -0.03420     0.005120    -0.04200
+len.syll     -0.684903  0.86690  0.90454  1.000000 -0.040617   -0.05472     0.007709    -0.02746
+related       0.005807 -0.04632 -0.03111 -0.040617  1.000000    0.81056     0.460316     0.44511
+integrated    0.037542 -0.04243 -0.03420 -0.054724  0.810558    1.00000     0.501003     0.39980
+plausibility  0.041212  0.02067  0.00512  0.007709  0.460316    0.50100     1.000000     0.22752
+association   0.012391 -0.05227 -0.04200 -0.027464  0.445110    0.39980     0.227520     1.00000

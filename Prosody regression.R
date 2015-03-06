@@ -11,9 +11,9 @@ as.factor(d.base$subject)
 as.factor(d.base$item)
 
 # For meeting with Neal
-View(d.base)
-d.val <- read.csv("data/prosody_items_original.csv")
-View(d.val)
+# View(d.base)
+# d.val <- read.csv("data/prosody_items_original.csv")
+# View(d.val)
 
 #------------------------------SET UP OUTPUT FILE------------------------------
 sink("output/SemRel Prosody Analyses.txt")
@@ -55,7 +55,6 @@ d.n1$assoc    <- d.n1$association
 d.p1$freq     <- d.p1$freq
 d.p1$len.char <- scale(d.p1$len.char, center=TRUE, scale=TRUE)
 d.p1$len.phon <- scale(d.p1$len.phon, center=TRUE, scale=TRUE)
-d.p1$len.syll <- scale(d.p1$len.syll, center=TRUE, scale=TRUE)
 d.p1$relat    <- scale(d.p1$related, center=TRUE, scale=TRUE)
 d.p1$integ    <- scale(d.p1$integrated, center=TRUE, scale=TRUE)
 d.p1$plaus    <- scale(d.p1$plausibility, center=TRUE, scale=TRUE)
@@ -106,14 +105,13 @@ cat("SUBSET N1", sep = "", fill = 60)
 cat(rep(c("-"), times=40, quote=F), "\n")
 pros.n1 <- lmer(seconds ~  freq + len.char + len.phon + len.syll + relat + integ  + assoc + plaus + (1|subject) + (1|item), data = d.n1, REML=FALSE)
 print(summary(pros.n1))
-sink()
 
 
 # P1 -------------------
 cat(rep(c("-"), times=40, quote=F),"\n")
 cat("SUBSET P1", sep = "", fill = 60)
 cat(rep(c("-"), times=40, quote=F), "\n")
-pros.p1 <- lmer(seconds ~ freq + len.char + len.phon + len.syll + relat + integ  + assoc + plaus + (1|subject) + (1|item), data = d.p1, REML=FALSE)
+pros.p1 <- lmer(seconds ~ freq + len.char + len.phon +  relat + integ  + assoc + plaus + (1|subject) + (1|item), data = d.p1, REML=FALSE)
 print(summary(pros.p1))
 
 # D2 -------------------
@@ -138,5 +136,14 @@ cat(rep(c("-"), times=40, quote=F), "\n")
 pros.n2 <- lmer(seconds ~  freq + len.char + len.phon + len.syll + relat + integ  + assoc + plaus + (1|subject) + (1|item), data = d.n2, REML=FALSE)
 print(summary(pros.n2))
 
+# N2 -------------------
+cat(rep(c("-"), times=40, quote=F),"\n")
+cat("CORRELATION MATRIX", sep = "", fill = 60)
+cat(rep(c("-"), times=40, quote=F), "\n")
+d.cor<-d.base[,c(5,9:16)]
+d.cor<-subset(d.cor, word.type =="D1" | word.type == "N1" | word.type == "P1" | word.type == "D2" | word.type == "A1"| word.type=="N2")
+d.cor$word.type = NULL
+cor.mat <-cor(d.cor)
+print(cor.mat, digits=4)
 sink()
 
