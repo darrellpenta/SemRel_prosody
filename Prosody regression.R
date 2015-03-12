@@ -8,6 +8,7 @@ library(lmerTest)
 
 
 # ------------------------------SET UP INPUT FILE(S)----------------------------
+<<<<<<< HEAD
 d.base <- read.csv("data/d_prosody.csv",colClasses="character")
 d.base$subject   <- as.factor(d.base$subject)
 d.base$item      <- as.factor(d.base$item)
@@ -35,6 +36,26 @@ d.base$fr.pre.wd <- as.numeric(d.base$pre.word.freq)
 # scaling fr.pos.wd causes computation of residuals from 5 preamble positions to throw a warning
 #d.base$fr.pos.wd <- scale(as.numeric(d.base$post.word.freq), center = TRUE, scale = TRUE)
 d.base$fr.pos.wd <- as.numeric(d.base$post.word.freq)
+=======
+d.base <- read.csv("data/d_prosody.csv")
+d.base$subject   <- as.factor(d.base$subject)
+d.base$item      <- as.factor(d.base$item)
+d.base$freq      <- d.base$freq
+d.base$len.char  <- scale(d.base$len.char, center=TRUE, scale=TRUE)
+d.base$len.phon  <- scale(d.base$len.phon, center=TRUE, scale=TRUE)
+d.base$len.syll  <- scale(d.base$len.syll, center=TRUE, scale=TRUE)
+d.base$relat     <- scale(d.base$related, center=TRUE, scale=TRUE)
+d.base$integ     <- scale(d.base$integrated, center=TRUE, scale=TRUE)
+d.base$plaus     <- scale(d.base$plausibility, center=TRUE, scale=TRUE)
+d.base$assoc     <- d.base$association
+d.base$n1.len    <- scale(d.base$n1.len, center = TRUE, scale = TRUE)
+d.base$p1.len    <- scale(d.base$p1.len, center = TRUE, scale = TRUE)
+d.base$a1.len    <- scale(d.base$a1.len, center = TRUE, scale = TRUE)
+d.base$n2.len    <- scale(d.base$n2.len, center = TRUE, scale = TRUE)
+d.base$fr.pre.wd <- (as.numeric(d.base$pre.word.freq))
+d.base$fr.pos.wd <- (as.numeric(d.base$post.word.freq))
+
+>>>>>>> origin/master
 
 # View(d.base)
 
@@ -149,7 +170,11 @@ print(summary(pros.n2.a))
 cat(rep(c("-"), times=40, quote=F),"\n")
 cat("CORRELATION MATRIX", sep = "", fill = 60)
 cat(rep(c("-"), times=40, quote=F), "\n")
+<<<<<<< HEAD
 d.cor <-d.base[,c(5, 9:12, 19:22,25:30)]
+=======
+d.cor <-d.base[,c(5, 9:16, 19:22,29:30)]
+>>>>>>> origin/master
 d.cor <-subset(d.cor, word.type =="D1" | word.type == "N1" | word.type == "P1" | word.type == "D2" | word.type == "A1"| word.type=="N2")
 d.cor$word.type = NULL
 
@@ -166,6 +191,7 @@ sink()
 
 #===================  COMPUTING and USING RESIDUALS from here on ================
 
+<<<<<<< HEAD
 sink("output/SemRel Prosody Analyses-Residuals.txt")
 cat(" ", "\n")
 cat("SEMREL PROSODY ANALYSES with RESIDUALS RUN ON: ", format(Sys.time(), "%b. %d, %Y at %T"), sep = "", fill= 70)
@@ -203,6 +229,48 @@ print(summary(pros.preamble.fpre))
 #
 # pros.preamble.5all <- lmer(resid.fpre~ n1.len + p1.len + a1.len +  n2.len + (1 + n1.len + p1.len +a1.len + n2.len|subject) + (1|item), data = d.preamble.5pos, REML=TRUE)
 # d.preamble.5pos$resid.5all <- residuals(pros.preamble.5all)
+=======
+sink("output/SemRel Prosody Analyses-Regressions.txt")
+cat(" ", "\n")
+cat("SEMREL PROSODY ANALYSES with REGRESSIONS RUN ON: ", format(Sys.time(), "%b. %d, %Y at %T"), sep = "", fill= 70)
+cat(" ", "\n")
+
+
+
+d.preamble.6pos <- subset(d.base, word.type == "D1" | word.type == "N1" | word.type == "P1" | word.type == "D2" | word.type == "A1"| word.type == "N2")
+pros.preamble.frln <- lmer( seconds ~ freq + len.phon  + (1 + freq + len.phon |subject) + (1 + freq + len.phon |item), data = d.preamble.6pos, REML=TRUE)
+d.preamble.6pos$resid.frln <- residuals(pros.preamble.frln)
+
+pros.preamble.plaus <- lmer( resid.frln ~ plaus + (1 + plaus |subject) + (1 + plaus |item), data = d.preamble.6pos, REML=TRUE)
+d.preamble.6pos$resid.frlnpl <- residuals(pros.preamble.plaus)
+
+pros.preamble.fpos <- lmer( resid.frlnpl ~ fr.pos.wd + (1 + fr.pos.wd|subject) + (1 + fr.pos.wd|item), data = d.preamble.6pos, REML=TRUE)
+d.preamble.6pos$resid.frlnpl.fpos <- residuals(pros.preamble.fpos)
+
+pros.preamble.all.len <- lmer( resid.frlnpl.fpos ~ n1.len + p1.len + a1.len + n2.len + (1 + n1.len + p1.len + a1.len + n2.len|subject) + (1 + n1.len + p1.len + a1.len + n2.len|item), data = d.preamble.6pos, REML=TRUE)
+d.preamble.6pos$resid.all <- residuals(pros.preamble.all.len)
+summary(pros.preamble.all.len)
+
+
+d.preamble.5pos <- subset(d.preamble.6pos, word.type != "D1")
+pros.preamble.fpre <- lmer( resid.frlnpl.fpos ~ fr.pre.wd + (1 + fr.pre.wd|subject) + (1 + fr.pre.wd|item), data = d.preamble.5pos, REML=TRUE)
+d.preamble.5pos$resid.fpre <- residuals(pros.preamble.fpre)
+
+pros.preamble.pan <- lmer(resid.fpre~ p1.len + a1.len + n2.len + (1 + p1.len + a1.len + n2.len|subject) + (1|item), data = d.preamble.5pos, REML=TRUE)
+d.preamble.5pos$resid.pan <- residuals(pros.preamble.pan)
+
+pros.preamble.nan <- lmer(resid.fpre~ n1.len + a1.len + n2.len + (1 + n1.len + a1.len + n2.len|subject) + (1|item), data = d.preamble.5pos, REML=TRUE)
+d.preamble.5pos$resid.nan <- residuals(pros.preamble.nan)
+
+pros.preamble.npn <- lmer(resid.fpre~ n1.len + p1.len + n2.len + (1 + n1.len + p1.len + n2.len|subject) + (1|item), data = d.preamble.5pos, REML=TRUE)
+d.preamble.5pos$resid.npn <- residuals(pros.preamble.npn)
+
+pros.preamble.npa <- lmer(resid.fpre~ n1.len + p1.len + a1.len + (1 + n1.len + p1.len + a1.len|subject) + (1|item), data = d.preamble.5pos, REML=TRUE)
+d.preamble.5pos$resid.npa <- residuals(pros.preamble.npa)
+
+pros.preamble.5all <- lmer(resid.fpre~ n1.len + p1.len + a1.len +  n2.len + (1 + n1.len + p1.len +a1.len + n2.len|subject) + (1|item), data = d.preamble.5pos, REML=TRUE)
+d.preamble.5pos$resid.5all <- residuals(pros.preamble.5all)
+>>>>>>> origin/master
 
 # ------------------------------CREATE SUBSETS-----------------------------------
 
@@ -213,12 +281,17 @@ d.d2 <- subset(d.preamble.5pos, word.type == "D2")
 d.a1 <- subset(d.preamble.5pos, word.type == "A1")
 d.n2 <- subset(d.preamble.5pos, word.type == "N2")
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/master
 # ------------------------------------------------------------------------------------------------------------------
 # ---------------------------CREATE AND COMPARE MODELS on residuals-------------------------------------------------
 # ------------------------------------------------------------------------------------------------------------------
 
 
 # D1 -------------------
+<<<<<<< HEAD
 pros.preamble.d1 <- lmer( resid.frln.fpos ~ plaus + (1 + plaus|subject) + (1 + plaus|item), data = d.d1, REML=TRUE)
 d.d1$resid <- residuals(pros.preamble.d1)
 print(summary(pros.preamble.d1))
@@ -235,17 +308,28 @@ cat(rep(c("-"), times=40, quote=F),"\n")
 cat("SUBSET D1 (with Related) residuals", sep = "", fill = 60)
 cat(rep(c("-"), times=40, quote=F), "\n")
 pros.d1.r <- lmer(resid ~ relat + integ + (1|subject) + (1|item), data = d.d1, REML=TRUE)
+=======
+cat(rep(c("-"), times=40, quote=F),"\n")
+cat("SUBSET D1 (with Related) residuals", sep = "", fill = 60)
+cat(rep(c("-"), times=40, quote=F), "\n")
+pros.d1.r <- lmer(resid.frlnpl.fpos ~  relat + integ + (1|subject) + (1|item), data = d.d1, REML=TRUE)
+>>>>>>> origin/master
 print(summary(pros.d1.r))
 
 cat(rep(c("-"), times=40, quote=F),"\n")
 cat("SUBSET D1 (with Association) residuals", sep = "", fill = 60)
 cat(rep(c("-"), times=40, quote=F), "\n")
+<<<<<<< HEAD
 pros.d1.a <- lmer(resid ~ assoc + integ + (1|subject) + (1|item), data = d.d1, REML=TRUE)
+=======
+pros.d1.a <- lmer(resid.frlnpl.fpos ~  assoc + integ  + (1|subject) + (1|item), data = d.d1, REML=TRUE)
+>>>>>>> origin/master
 print(summary(pros.d1.a))
 
 
 
 # N1 -------------------
+<<<<<<< HEAD
 pros.preamble.n1 <- lmer( resid.fpre ~ plaus + p1.len + a1.len + n2.len + (1 + plaus + p1.len + a1.len + n2.len|subject) + (1 + plaus + p1.len + a1.len + n2.len|item), data = d.n1, REML=TRUE)
 d.n1$resid.pllen <- residuals(pros.preamble.n1)
 print(summary(pros.preamble.n1))
@@ -254,16 +338,27 @@ cat(rep(c("-"), times=40, quote=F),"\n")
 cat("SUBSET N1 (with Related) residuals", sep = "", fill = 60)
 cat(rep(c("-"), times=40, quote=F), "\n")
 pros.n1.r <- lmer(resid.pllen ~  relat + integ + (1|subject) + (1|item), data = d.n1, REML=TRUE)
+=======
+cat(rep(c("-"), times=40, quote=F),"\n")
+cat("SUBSET N1 (with Related) residuals", sep = "", fill = 60)
+cat(rep(c("-"), times=40, quote=F), "\n")
+pros.n1.r <- lmer(resid.fpre ~  relat + integ + (1|subject) + (1|item), data = d.n1, REML=TRUE)
+>>>>>>> origin/master
 print(summary(pros.n1.r))
 
 cat(rep(c("-"), times=40, quote=F),"\n")
 cat("SUBSET N1 (with Association) residuals", sep = "", fill = 60)
 cat(rep(c("-"), times=40, quote=F), "\n")
+<<<<<<< HEAD
 pros.n1.a <- lmer(resid.pllen ~  assoc + integ  + (1|subject) + (1|item), data = d.n1, REML=TRUE)
+=======
+pros.n1.a <- lmer(resid.fpre ~  assoc + integ  + (1|subject) + (1|item), data = d.n1, REML=TRUE)
+>>>>>>> origin/master
 print(summary(pros.n1.a))
 
 
 # P1 -------------------
+<<<<<<< HEAD
 pros.preamble.p1 <- lmer( resid.fpre ~ plaus + n1.len + a1.len + n2.len + (1 + plaus + n1.len + a1.len + n2.len|subject) + (1 + plaus + n1.len + a1.len + n2.len|item), data = d.p1, REML=TRUE)
 d.p1$resid.pllen <- residuals(pros.preamble.p1)
 print(summary(pros.preamble.p1))
@@ -272,11 +367,18 @@ cat(rep(c("-"), times=40, quote=F),"\n")
 cat("SUBSET P1 (with Related) residuals", sep = "", fill = 60)
 cat(rep(c("-"), times=40, quote=F), "\n")
 pros.p1.r <- lmer(resid.pllen ~ relat + integ + (1|subject) + (1|item), data = d.p1, REML=TRUE)
+=======
+cat(rep(c("-"), times=40, quote=F),"\n")
+cat("SUBSET P1 (with Related) residuals", sep = "", fill = 60)
+cat(rep(c("-"), times=40, quote=F), "\n")
+pros.p1.r <- lmer(resid.nan ~ relat + integ + (1|subject) + (1|item), data = d.p1, REML=TRUE)
+>>>>>>> origin/master
 print(summary(pros.p1.r))
 
 cat(rep(c("-"), times=40, quote=F),"\n")
 cat("SUBSET P1 (with Association) residuals", sep = "", fill = 60)
 cat(rep(c("-"), times=40, quote=F), "\n")
+<<<<<<< HEAD
 pros.p1.a <- lmer(resid.pllen ~ assoc + integ + (1|subject) + (1|item), data = d.p1, REML=TRUE)
 print(summary(pros.p1.a))
 
@@ -285,6 +387,12 @@ pros.preamble.d2 <- lmer( resid.fpre ~ plaus + n1.len + p1.len + a1.len + n2.len
 d.p1$resid.pllen <- residuals(pros.preamble.p1)
 print(summary(pros.preamble.p1))
 
+=======
+pros.p1.a <- lmer(resid.nan ~ assoc + integ + (1|subject) + (1|item), data = d.p1, REML=TRUE)
+print(summary(pros.p1.a))
+
+# D2 -------------------
+>>>>>>> origin/master
 cat(rep(c("-"), times=40, quote=F),"\n")
 cat("SUBSET D2 (with Related) residuals", sep = "", fill = 60)
 cat(rep(c("-"), times=40, quote=F), "\n")
