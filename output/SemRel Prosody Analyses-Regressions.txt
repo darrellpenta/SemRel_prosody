@@ -1,0 +1,113 @@
+  
+SEMREL PROSODY ANALYSES with REGRESSIONS RUN ON: 
+Mar. 11, 2015 at 17:15:36
+  
+Linear mixed model fit by REML t-tests use Satterthwaite approximations to degrees of freedom [merModLmerTest]
+Formula: resid.frlnpl ~ fr.pos.wd + (1 + fr.pos.wd | subject) + (1 + fr.pos.wd |      item)
+   Data: d.preamble.6pos
+
+REML criterion at convergence: -7937.7
+
+Scaled residuals: 
+    Min      1Q  Median      3Q     Max 
+-3.5986 -0.5085 -0.0793  0.2841  7.0869 
+
+Random effects:
+ Groups   Name        Variance  Std.Dev. Corr 
+ subject  (Intercept) 6.401e-05 0.008000      
+          fr.pos.wd   4.198e-06 0.002049 -1.00
+ item     (Intercept) 7.689e-04 0.027729      
+          fr.pos.wd   4.953e-05 0.007038 -1.00
+ Residual             8.682e-03 0.093176      
+Number of obs: 4188, groups:  subject, 32; item, 24
+
+Fixed effects:
+              Estimate Std. Error         df t value Pr(>|t|)
+(Intercept)  0.0011883  0.0069621 22.3160000   0.171    0.866
+fr.pos.wd   -0.0002194  0.0017319 22.9720000  -0.127    0.900
+
+Correlation of Fixed Effects:
+          (Intr)
+fr.pos.wd -0.978
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+SUBSET D1 (with Related) residuals
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+Linear mixed model fit by REML t-tests use Satterthwaite approximations to degrees of freedom [merModLmerTest]
+Formula: resid.frlnpl.fpos ~ relat + integ + n1.len + p1.len + a1.len +  
+    n2.len + (1 | subject) + (1 | item)
+   Data: d.d1
+
+REML criterion at convergence: -3060.8
+
+Scaled residuals: 
+    Min      1Q  Median      3Q     Max 
+-2.6109 -0.5958 -0.0959  0.4743 10.0628 
+
+Random effects:
+ Groups   Name        Variance  Std.Dev.
+ subject  (Intercept) 6.801e-05 0.008247
+ item     (Intercept) 1.797e-04 0.013405
+ Residual             5.773e-04 0.024028
+Number of obs: 698, groups:  subject, 32; item, 24
+
+Fixed effects:
+              Estimate Std. Error         df t value Pr(>|t|)   
+(Intercept)  5.038e-03  3.233e-03  3.020e+01   1.558  0.12963   
+relat        7.376e-04  1.832e-03  6.678e+02   0.403  0.68736   
+integ       -6.316e-04  1.800e-03  6.666e+02  -0.351  0.72574   
+n1.len      -1.126e-02  2.985e-03  2.110e+01  -3.771  0.00112 **
+p1.len      -1.765e-03  1.270e-03  6.572e+02  -1.389  0.16526   
+a1.len      -2.192e-03  2.774e-03  2.830e+01  -0.790  0.43597   
+n2.len      -4.741e-04  1.224e-03  6.354e+02  -0.387  0.69870   
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Correlation of Fixed Effects:
+       (Intr) relat  integ  n1.len p1.len a1.len
+relat  -0.002                                   
+integ   0.002 -0.826                            
+n1.len -0.003 -0.049  0.036                     
+p1.len -0.005  0.352 -0.411 -0.046              
+a1.len -0.027 -0.149  0.071  0.207 -0.118       
+n2.len -0.003  0.071  0.108 -0.018 -0.036 -0.105
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+SUBSET D1 (with Association) residuals
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+Linear mixed model fit by REML t-tests use Satterthwaite approximations to degrees of freedom [merModLmerTest]
+Formula: resid.frlnpl.fpos ~ assoc + integ + n1.len + p1.len + a1.len +  
+    n2.len + (1 | subject) + (1 | item)
+   Data: d.d1
+
+REML criterion at convergence: -3065.9
+
+Scaled residuals: 
+    Min      1Q  Median      3Q     Max 
+-2.5723 -0.5733 -0.1000  0.4819 10.0551 
+
+Random effects:
+ Groups   Name        Variance  Std.Dev.
+ subject  (Intercept) 6.758e-05 0.00822 
+ item     (Intercept) 1.693e-04 0.01301 
+ Residual             5.754e-04 0.02399 
+Number of obs: 698, groups:  subject, 32; item, 24
+
+Fixed effects:
+              Estimate Std. Error         df t value Pr(>|t|)    
+(Intercept)  6.029e-03  3.205e-03  3.210e+01   1.881  0.06906 .  
+assoc       -7.828e-03  4.090e-03  6.800e+02  -1.914  0.05605 .  
+integ        8.531e-04  1.111e-03  6.716e+02   0.768  0.44275    
+n1.len      -1.142e-02  2.905e-03  2.110e+01  -3.933  0.00076 ***
+p1.len      -2.204e-03  1.192e-03  6.506e+02  -1.849  0.06492 .  
+a1.len      -1.948e-03  2.679e-03  2.800e+01  -0.727  0.47317    
+n2.len      -4.119e-04  1.218e-03  6.279e+02  -0.338  0.73533    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Correlation of Fixed Effects:
+       (Intr) assoc  integ  n1.len p1.len a1.len
+assoc  -0.161                                   
+integ   0.068 -0.415                            
+n1.len -0.010  0.042 -0.025                     
+p1.len -0.022  0.109 -0.250 -0.027              
+a1.len -0.026 -0.008 -0.080  0.202 -0.074       
+n2.len  0.004 -0.039  0.285 -0.016 -0.068 -0.096
