@@ -164,7 +164,7 @@ dev.off()
 
 sink()
 
-#===================  COMPUTING and USING RESIDUALS from here on ================
+#===================  COMPUTING & USING RESIDUALS from here on ================
 
 sink("output/SemRel Prosody Analyses-Residuals.txt")
 cat(" ", "\n")
@@ -177,7 +177,7 @@ pros.preamble.frln <- lmer( seconds ~ freq + len.phon  + (1 + freq + len.phon |s
 d.preamble.6pos$resid.frln <- residuals(pros.preamble.frln)
 cat(rep(c("-"), times=40, quote=F),"\n")
 cat("6pos Freq. & Length", sep = "", fill = 60)
-cat(rep(c("-"), times=20, quote=F),"\n")
+cat(rep(c("-"), times=40, quote=F),"\n")
 print(summary(pros.preamble.frln))
 
 pros.preamble.fpos <- lmer( resid.frln ~ fr.pos.wd + (1 + fr.pos.wd|subject) + (1 + fr.pos.wd|item), data = d.preamble.6pos, REML=TRUE)
@@ -192,7 +192,7 @@ pros.preamble.fpre <- lmer( resid.frln.fpos ~ fr.pre.wd + (1 + fr.pre.wd|subject
 d.preamble.5pos$resid.fpre <- residuals(pros.preamble.fpre)
 cat(rep(c("-"), times=40, quote=F),"\n")
 cat("6pos Freq. Preceding Word", sep = "", fill = 60)
-cat(rep(c("-"), times=20, quote=F),"\n")
+cat(rep(c("-"), times=40, quote=F),"\n")
 print(summary(pros.preamble.fpre))
 
 
@@ -206,7 +206,7 @@ d.a1 <- subset(d.preamble.5pos, word.type == "A1")
 d.n2 <- subset(d.preamble.5pos, word.type == "N2")
 
 # ------------------------------------------------------------------------------------------------------------------
-# ---------------------------CREATE AND COMPARE MODELS on residuals-------------------------------------------------
+# ---------------------------CREATE AND COMPARE RESIDUALS MODELS -------------------------------------------------
 # ------------------------------------------------------------------------------------------------------------------
 
 
