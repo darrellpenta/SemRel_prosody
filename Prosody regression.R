@@ -165,50 +165,23 @@ dev.off()
 cat(rep(c("\n"), times = 2), rep(c("-"), times=40, quote=F),"\n")
 cat("INDIVIDUAL CORRELATIONS", sep = "", fill = 60)
 cat(rep(c("-"), times=40, quote=F), "\n")
-data.list = list(
-sec.freq      = cbind(d.base$seconds, d.base$freq),
-sec.len.char  = cbind(d.base$seconds, d.base$len.char),
-sec.len.phon  = cbind(d.base$seconds, d.base$len.phon),
-sec.len.syll  = cbind(d.base$seconds, d.base$len.syll),
-sec.relat     = cbind(d.base$seconds, d.base$relat),
-sec.integ     = cbind(d.base$seconds, d.base$integ),
-sec.plaus     = cbind(d.base$seconds, d.base$plaus),
-sec.assoc     = cbind(d.base$seconds, d.base$assoc),
-sec.n1.len    = cbind(d.base$seconds, d.base$n1.len),
-sec.p1.len    = cbind(d.base$seconds, d.base$p1.len),
-sec.a1.len    = cbind(d.base$seconds, d.base$a1.len),
-sec.n2.len    = cbind(d.base$seconds, d.base$n2.len)
-)
-
-for (i in data.list){
-i = cor(i, use="complete")
-return(i)
-print(i)
 
 
-}
+ind.cor <- data.frame(Measure = c("Freq.", "Len. Char.", "Len. Phon.","Len.Syll.","Relat.","Integ.","Plaus.","Assoc.","N1.Len.","P1.Len.","A1.Len.","N2.Len."),
 
-StatRep <- function(subset.names) {
-  subset.list = data.list[subset.names]
-
-  ds      = data.frame(data = c(subset.names))
-  ds$n    = lapply(subset.list, nrow)
-  ds$N    = lapply(subset.list, nrow)
-  ds$mean = lapply(subset.list, function(item) mean(item$error))
-  ds$sd   = lapply(subset.list, function(item) sd(item$error))
-  ds$se   = lapply(subset.list, function(item) sd(item$error)/sqrt(length(item$error)))
-  return(ds)
-}
-
-
-
-
-
-
-
-
-
-# For all the items in the list, do a correlation anaylsis.
+                            Seconds = c(cor(d.base$seconds, d.base$freq, use="complete"),
+                                        cor(d.base$seconds, d.base$len.char, use="complete"),
+                                        cor(d.base$seconds, d.base$len.phon, use="complete"),
+                                        cor(d.base$seconds, d.base$len.syll, use="complete"),
+                                        cor(d.base$seconds, d.base$relat, use="complete"),
+                                        cor(d.base$seconds, d.base$integ, use="complete"),
+                                        cor(d.base$seconds, d.base$plaus, use="complete"),
+                                        cor(d.base$seconds, d.base$assoc, use="complete"),
+                                        cor(d.base$seconds, d.base$n1.len, use="complete"),
+                                        cor(d.base$seconds, d.base$p1.len, use="complete"),
+                                        cor(d.base$seconds, d.base$a1.len, use="complete"),
+                                        cor(d.base$seconds, d.base$n2.len, use="complete")))
+print(ind.cor)
 sink()
 
 #===================  COMPUTING & USING RESIDUALS from here on ================
