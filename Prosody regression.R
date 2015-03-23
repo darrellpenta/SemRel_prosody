@@ -142,8 +142,8 @@ print(summary(pros.p1.i))
 cat(rep(c("\n"), times = 2), rep(c("-"), times=40, quote=F),"\n")
 cat("SUBSET P1 (Relatedness)", sep = "", fill = 60)
 cat(rep(c("-"), times=40, quote=F), "\n")
-pros.p1.i <- lmer(seconds ~ relat + plaus + freq + len.char + len.phon + n1.len + a1.len + n2.len + fr.pre.wd + (1|subject) + (1|item), data = d.p1, REML=TRUE)
-print(summary(pros.p1.i))
+pros.p1.r <- lmer(seconds ~ relat + plaus + freq + len.char + len.phon + n1.len + a1.len + n2.len + fr.pre.wd + (1|subject) + (1|item), data = d.p1, REML=TRUE)
+print(summary(pros.p1.r))
 
 
 cat(rep(c("\n"), times = 2), rep(c("-"), times=40, quote=F),"\n")
@@ -298,6 +298,8 @@ ind.cor <- data.frame(Factor = c("Freq.", "Len. Char.", "Len. Phon.","Len.Syll."
 print(ind.cor)
 sink()
 
+
+
 #===================  COMPUTING & USING RESIDUALS from here on ================
 
 sink("output/SemRel Prosody Analyses-Residuals.txt")
@@ -372,32 +374,32 @@ print(summary(pros.preamble.d1))
 cat(rep(c("-"), times=40, quote=F),"\n")
 cat("SUBSET D1 (Integration) residuals", sep = "", fill = 60)
 cat(rep(c("-"), times=40, quote=F), "\n")
-pros.d1.i <- lmer(resid ~ integ + (1|subject) + (1|item), data = d.d1, REML=TRUE)
-print(summary(pros.d1.i))
+res.d1.i <- lmer(resid ~ integ + (1|subject) + (1|item), data = d.d1, REML=TRUE)
+print(summary(res.d1.i))
 
 cat(rep(c("-"), times=40, quote=F),"\n")
 cat("SUBSET D1 (Relatedness) residuals", sep = "", fill = 60)
 cat(rep(c("-"), times=40, quote=F), "\n")
-pros.d1.r <- lmer(resid ~ relat + (1|subject) + (1|item), data = d.d1, REML=TRUE)
-print(summary(pros.d1.r))
+res.d1.r <- lmer(resid ~ relat + (1|subject) + (1|item), data = d.d1, REML=TRUE)
+print(summary(res.d1.r))
 
 cat(rep(c("-"), times=40, quote=F),"\n")
 cat("SUBSET D1 (Association) residuals", sep = "", fill = 60)
 cat(rep(c("-"), times=40, quote=F), "\n")
-pros.d1.a <- lmer(resid ~ assoc  + (1|subject) + (1|item), data = d.d1, REML=TRUE)
-print(summary(pros.d1.a))
+res.d1.a <- lmer(resid ~ assoc  + (1|subject) + (1|item), data = d.d1, REML=TRUE)
+print(summary(res.d1.a))
 
 cat(rep(c("-"), times=40, quote=F),"\n")
 cat("SUBSET D1 (Integration with Related) residuals", sep = "", fill = 60)
 cat(rep(c("-"), times=40, quote=F), "\n")
-pros.d1.ir <- lmer(resid ~ relat + integ + (1|subject) + (1|item), data = d.d1, REML=TRUE)
-print(summary(pros.d1.ir))
+res.d1.ir <- lmer(resid ~ relat + integ + (1|subject) + (1|item), data = d.d1, REML=TRUE)
+print(summary(res.d1.ir))
 
 cat(rep(c("-"), times=40, quote=F),"\n")
 cat("SUBSET D1 (Integration with Association) residuals", sep = "", fill = 60)
 cat(rep(c("-"), times=40, quote=F), "\n")
-pros.d1.ia <- lmer(resid ~ assoc + integ + (1|subject) + (1|item), data = d.d1, REML=TRUE)
-print(summary(pros.d1.ia))
+res.d1.ia <- lmer(resid ~ assoc + integ + (1|subject) + (1|item), data = d.d1, REML=TRUE)
+print(summary(res.d1.ia))
 
 
 
@@ -429,32 +431,32 @@ print(summary(pros.preamble.n1))
 cat(rep(c("-"), times=40, quote=F),"\n")
 cat("SUBSET N1 (Integration) residuals", sep = "", fill = 60)
 cat(rep(c("-"), times=40, quote=F), "\n")
-pros.n1.i <- lmer(resid ~  integ + (1|subject) + (1|item), data = d.n1, REML=TRUE)
-print(summary(pros.n1.i))
+res.n1.i <- lmer(resid ~  integ + (1|subject) + (1|item), data = d.n1, REML=TRUE)
+print(summary(res.n1.i))
 
 cat(rep(c("-"), times=40, quote=F),"\n")
 cat("SUBSET N1 (with Related) residuals", sep = "", fill = 60)
 cat(rep(c("-"), times=40, quote=F), "\n")
-pros.n1.r <- lmer(resid ~  relat + (1|subject) + (1|item), data = d.n1, REML=TRUE)
-print(summary(pros.n1.r))
+res.n1.r <- lmer(resid ~  relat + (1|subject) + (1|item), data = d.n1, REML=TRUE)
+print(summary(res.n1.r))
 
 cat(rep(c("-"), times=40, quote=F),"\n")
 cat("SUBSET N1 (Association) residuals", sep = "", fill = 60)
 cat(rep(c("-"), times=40, quote=F), "\n")
-pros.n1.a <- lmer(resid ~  assoc  + (1|subject) + (1|item), data = d.n1, REML=TRUE)
-print(summary(pros.n1.a))
+res.n1.a <- lmer(resid ~  assoc  + (1|subject) + (1|item), data = d.n1, REML=TRUE)
+print(summary(res.n1.a))
 
 cat(rep(c("-"), times=40, quote=F),"\n")
 cat("SUBSET N1 (Integration with Related) residuals", sep = "", fill = 60)
 cat(rep(c("-"), times=40, quote=F), "\n")
-pros.n1.ir <- lmer(resid ~  relat + integ + (1|subject) + (1|item), data = d.n1, REML=TRUE)
-print(summary(pros.n1.ir))
+res.n1.ir <- lmer(resid ~  relat + integ + (1|subject) + (1|item), data = d.n1, REML=TRUE)
+print(summary(res.n1.ir))
 
 cat(rep(c("-"), times=40, quote=F),"\n")
 cat("SUBSET N1 (Integration with Association) residuals", sep = "", fill = 60)
 cat(rep(c("-"), times=40, quote=F), "\n")
-pros.n1.ia <- lmer(resid ~  assoc + integ  + (1|subject) + (1|item), data = d.n1, REML=TRUE)
-print(summary(pros.n1.ia))
+res.n1.ia <- lmer(resid ~  assoc + integ  + (1|subject) + (1|item), data = d.n1, REML=TRUE)
+print(summary(res.n1.ia))
 
 
 # P1 (w/ Resids)-------------------
@@ -486,33 +488,33 @@ print(summary(pros.preamble.p1))
 cat(rep(c("-"), times=40, quote=F),"\n")
 cat("SUBSET P1 (Integration) residuals", sep = "", fill = 60)
 cat(rep(c("-"), times=40, quote=F), "\n")
-pros.p1.i <- lmer(resid ~  integ + (1|subject) + (1|item), data = d.p1, REML=TRUE)
-print(summary(pros.p1.i))
+res.p1.i <- lmer(resid ~  integ + (1|subject) + (1|item), data = d.p1, REML=TRUE)
+print(summary(res.p1.i))
 
 cat(rep(c("-"), times=40, quote=F),"\n")
 cat("SUBSET P1 (Related) residuals", sep = "", fill = 60)
 cat(rep(c("-"), times=40, quote=F), "\n")
-pros.p1.r <- lmer(resid ~ relat + (1|subject) + (1|item), data = d.p1, REML=TRUE)
-print(summary(pros.p1.r))
+res.p1.r <- lmer(resid ~ relat + (1|subject) + (1|item), data = d.p1, REML=TRUE)
+print(summary(res.p1.r))
 
 cat(rep(c("-"), times=40, quote=F),"\n")
 cat("SUBSET P1 (Association) residuals", sep = "", fill = 60)
 cat(rep(c("-"), times=40, quote=F), "\n")
-pros.p1.a <- lmer(resid ~ assoc + (1|subject) + (1|item), data = d.p1, REML=TRUE)
-print(summary(pros.p1.a))
+res.p1.a <- lmer(resid ~ assoc + (1|subject) + (1|item), data = d.p1, REML=TRUE)
+print(summary(res.p1.a))
 
 
 cat(rep(c("-"), times=40, quote=F),"\n")
 cat("SUBSET P1 (Integration with Related) residuals", sep = "", fill = 60)
 cat(rep(c("-"), times=40, quote=F), "\n")
-pros.p1.ir <- lmer(resid ~ relat + integ + (1|subject) + (1|item), data = d.p1, REML=TRUE)
-print(summary(pros.p1.ir))
+res.p1.ir <- lmer(resid ~ relat + integ + (1|subject) + (1|item), data = d.p1, REML=TRUE)
+print(summary(res.p1.ir))
 
 cat(rep(c("-"), times=40, quote=F),"\n")
 cat("SUBSET P1 (Integration with Association) residuals", sep = "", fill = 60)
 cat(rep(c("-"), times=40, quote=F), "\n")
-pros.p1.ia <- lmer(resid ~ assoc + integ + (1|subject) + (1|item), data = d.p1, REML=TRUE)
-print(summary(pros.p1.ia))
+res.p1.ia <- lmer(resid ~ assoc + integ + (1|subject) + (1|item), data = d.p1, REML=TRUE)
+print(summary(res.p1.ia))
 
 # D2 (w/ Resids) -------------------
 cat(rep(c("\n"), times = 2), rep(c("-"), times=40, quote=F),"\n")
@@ -542,32 +544,32 @@ print(summary(pros.preamble.d2))
 cat(rep(c("-"), times=40, quote=F),"\n")
 cat("SUBSET D2 (Integration) residuals", sep = "", fill = 60)
 cat(rep(c("-"), times=40, quote=F), "\n")
-pros.d2.i <- lmer(resid ~  integ + (1|subject) + (1|item), data = d.d2, REML=TRUE)
-print(summary(pros.d2.i))
+res.d2.i <- lmer(resid ~  integ + (1|subject) + (1|item), data = d.d2, REML=TRUE)
+print(summary(res.d2.i))
 
 cat(rep(c("-"), times=40, quote=F),"\n")
 cat("SUBSET D2 (Related) residuals", sep = "", fill = 60)
 cat(rep(c("-"), times=40, quote=F), "\n")
-pros.d2.r <- lmer(resid ~  relat + (1|subject) + (1|item), data = d.d2, REML=TRUE)
-print(summary(pros.d2.r))
+res.d2.r <- lmer(resid ~  relat + (1|subject) + (1|item), data = d.d2, REML=TRUE)
+print(summary(res.d2.r))
 
 cat(rep(c("-"), times=40, quote=F),"\n")
 cat("SUBSET D2 (Association) residuals", sep = "", fill = 60)
 cat(rep(c("-"), times=40, quote=F), "\n")
-pros.d2.a <- lmer(resid ~ assoc + (1|subject) + (1|item), data = d.d2, REML=TRUE)
-print(summary(pros.d2.a))
+res.d2.a <- lmer(resid ~ assoc + (1|subject) + (1|item), data = d.d2, REML=TRUE)
+print(summary(res.d2.a))
 
 cat(rep(c("-"), times=40, quote=F),"\n")
 cat("SUBSET D2 (Integration with Related) residuals", sep = "", fill = 60)
 cat(rep(c("-"), times=40, quote=F), "\n")
-pros.d2.ir <- lmer(resid ~  relat + integ + (1|subject) + (1|item), data = d.d2, REML=TRUE)
-print(summary(pros.d2.ir))
+res.d2.ir <- lmer(resid ~  relat + integ + (1|subject) + (1|item), data = d.d2, REML=TRUE)
+print(summary(res.d2.ir))
 
 cat(rep(c("-"), times=40, quote=F),"\n")
 cat("SUBSET D2 (Integration with Association) residuals", sep = "", fill = 60)
 cat(rep(c("-"), times=40, quote=F), "\n")
-pros.d2.ia <- lmer(resid ~ assoc + integ + (1|subject) + (1|item), data = d.d2, REML=TRUE)
-print(summary(pros.d2.ia))
+res.d2.ia <- lmer(resid ~ assoc + integ + (1|subject) + (1|item), data = d.d2, REML=TRUE)
+print(summary(res.d2.ia))
 
 # A1 (w/ Resids)-------------------
 cat(rep(c("\n"), times = 2), rep(c("-"), times=40, quote=F),"\n")
@@ -598,35 +600,35 @@ cat(rep(c("\n"), times = 2), rep(c("-"), times=40, quote=F),"\n")
 cat(rep(c("-"), times=40, quote=F),"\n")
 cat("SUBSET A1 (Integration) residuals", sep = "", fill = 60)
 cat(rep(c("-"), times=40, quote=F), "\n")
-pros.a1.i <- lmer(resid ~ integ + (1|subject) + (1|item), data = d.a1, REML=TRUE)
-print(summary(pros.a1.i))
+res.a1.i <- lmer(resid ~ integ + (1|subject) + (1|item), data = d.a1, REML=TRUE)
+print(summary(res.a1.i))
 
 cat(rep(c("\n"), times = 2), rep(c("-"), times=40, quote=F),"\n")
 cat(rep(c("-"), times=40, quote=F),"\n")
 cat("SUBSET A1 (Related) residuals", sep = "", fill = 60)
 cat(rep(c("-"), times=40, quote=F), "\n")
-pros.a1.r <- lmer(resid ~ relat + (1|subject) + (1|item), data = d.a1, REML=TRUE)
-print(summary(pros.a1.r))
+res.a1.r <- lmer(resid ~ relat + (1|subject) + (1|item), data = d.a1, REML=TRUE)
+print(summary(res.a1.r))
 
 cat(rep(c("-"), times=40, quote=F),"\n")
 cat("SUBSET A1 (Association) residuals", sep = "", fill = 60)
 cat(rep(c("-"), times=40, quote=F), "\n")
-pros.a1.a <- lmer(resid ~ assoc + (1|subject) + (1|item), data = d.a1, REML=TRUE)
-print(summary(pros.a1.a))
+res.a1.a <- lmer(resid ~ assoc + (1|subject) + (1|item), data = d.a1, REML=TRUE)
+print(summary(res.a1.a))
 
 
 cat(rep(c("\n"), times = 2), rep(c("-"), times=40, quote=F),"\n")
 cat(rep(c("-"), times=40, quote=F),"\n")
 cat("SUBSET A1 (Integration with Related) residuals", sep = "", fill = 60)
 cat(rep(c("-"), times=40, quote=F), "\n")
-pros.a1.ir <- lmer(resid ~ relat + integ + (1|subject) + (1|item), data = d.a1, REML=TRUE)
-print(summary(pros.a1.ir))
+res.a1.ir <- lmer(resid ~ relat + integ + (1|subject) + (1|item), data = d.a1, REML=TRUE)
+print(summary(res.a1.ir))
 
 cat(rep(c("-"), times=40, quote=F),"\n")
 cat("SUBSET A1 (Integration with Association) residuals", sep = "", fill = 60)
 cat(rep(c("-"), times=40, quote=F), "\n")
-pros.a1.ia <- lmer(resid ~ assoc + integ + (1|subject) + (1|item), data = d.a1, REML=TRUE)
-print(summary(pros.a1.ia))
+res.a1.ia <- lmer(resid ~ assoc + integ + (1|subject) + (1|item), data = d.a1, REML=TRUE)
+print(summary(res.a1.ia))
 
 # N2 (w/ Resids)-------------------
 
@@ -657,35 +659,131 @@ print(summary(pros.preamble.n2))
 cat(rep(c("-"), times=40, quote=F),"\n")
 cat("SUBSET N2 (Integration) residuals", sep = "", fill = 60)
 cat(rep(c("-"), times=40, quote=F), "\n")
-pros.n2.i <- lmer(resid ~  integ + (1|subject) + (1|item), data = d.n2, REML=TRUE)
-print(summary(pros.n2.i))
+res.n2.i <- lmer(resid ~  integ + (1|subject) + (1|item), data = d.n2, REML=TRUE)
+print(summary(res.n2.i))
 
 
 cat(rep(c("-"), times=40, quote=F),"\n")
 cat("SUBSET N2 (Relatedness) residuals", sep = "", fill = 60)
 cat(rep(c("-"), times=40, quote=F), "\n")
-pros.n2.r <- lmer(resid ~  relat + (1|subject) + (1|item), data = d.n2, REML=TRUE)
-print(summary(pros.n2.r))
+res.n2.r <- lmer(resid ~  relat + (1|subject) + (1|item), data = d.n2, REML=TRUE)
+print(summary(res.n2.r))
 
 cat(rep(c("-"), times=40, quote=F),"\n")
 cat("SUBSET N2 (Association) residuals", sep = "", fill = 60)
 cat(rep(c("-"), times=40, quote=F), "\n")
-pros.n2.a <- lmer(resid ~  assoc + (1|subject) + (1|item), data = d.n2, REML=TRUE)
-print(summary(pros.n2.a))
+res.n2.a <- lmer(resid ~  assoc + (1|subject) + (1|item), data = d.n2, REML=TRUE)
+print(summary(res.n2.a))
 
 
 cat(rep(c("-"), times=40, quote=F),"\n")
 cat("SUBSET N2 (Integration with Related) residuals", sep = "", fill = 60)
 cat(rep(c("-"), times=40, quote=F), "\n")
-pros.n2.ir <- lmer(resid ~  relat + integ + (1|subject) + (1|item), data = d.n2, REML=TRUE)
-print(summary(pros.n2.ir))
+res.n2.ir <- lmer(resid ~  relat + integ + (1|subject) + (1|item), data = d.n2, REML=TRUE)
+print(summary(res.n2.ir))
 
 cat(rep(c("-"), times=40, quote=F),"\n")
 cat("SUBSET N2 (Integration with Association) residuals", sep = "", fill = 60)
 cat(rep(c("-"), times=40, quote=F), "\n")
-pros.n2.ia <- lmer(resid ~  assoc + integ + (1|subject) + (1|item), data = d.n2, REML=TRUE)
-print(summary(pros.n2.ia))
-
-
-
+res.n2.ia <- lmer(resid ~  assoc + integ + (1|subject) + (1|item), data = d.n2, REML=TRUE)
+print(summary(res.n2.ia))
 sink()
+
+#
+# COEFFICIENTS TABLE-----------------------------------------------------------------------------
+
+data.list = list(
+  pros.d1.i,
+  pros.d1.r,
+  pros.d1.a,
+  pros.d1.ir,
+  pros.d1.ia,
+  res.d1.i,
+  res.d1.r,
+  res.d1.a,
+  res.d1.ir,
+  res.d1.ia,
+  pros.n1.i,
+  pros.n1.r,
+  pros.n1.a,
+  pros.n1.ir,
+  pros.n1.ia,
+  res.n1.i,
+  res.n1.r,
+  res.n1.a,
+  res.n1.ir,
+  res.n1.ia,
+  pros.p1.i,
+  pros.p1.r,
+  pros.p1.a,
+  pros.p1.ir,
+  pros.p1.ia,
+  res.p1.i,
+  res.p1.r,
+  res.p1.a,
+  res.p1.ir,
+  res.p1.ia,
+  pros.d2.i,
+  pros.d2.r,
+  pros.d2.a,
+  pros.d2.ir,
+  pros.d2.ia,
+  res.d2.i,
+  res.d2.r,
+  res.d2.a,
+  res.d2.ir,
+  res.d2.ia,
+  pros.a1.i,
+  pros.a1.r,
+  pros.a1.a,
+  pros.a1.ir,
+  pros.a1.ia,
+  res.a1.i,
+  res.a1.r,
+  res.a1.a,
+  res.a1.ir,
+  res.a1.ia,
+  pros.n2.i,
+  pros.n2.r,
+  pros.n2.a,
+  pros.n2.ir,
+  pros.n2.ia,
+  res.n2.i,
+  res.n2.r,
+  res.n2.a,
+  res.n2.ir,
+  res.n2.ia
+)
+
+
+
+
+aaa<-t(pros.d1.i@beta)
+t(aaa)
+
+fff<- cbind(as.data.frame(t(t(colnames(pros.d1.i@pp$X)))),as.data.frame(t(t(pros.d1.i@beta))))
+
+coeff.table <- data.frame (
+  V1 = c(
+    "(intercept)",
+    "integ",
+    "relat",
+    "assoc",
+    "plaus",
+    "freq",
+    "len.char",
+    "len.phon",
+    "len.syll",
+    "n1.len",
+    "p1.len",
+    "a1.len",
+    "n2.len",
+    "fr.pre.wd",
+    "fr.pos.wd"))
+
+coeff.table$V1 <- as.factor(coeff.table$V1)
+
+
+View(all.facs)
+
+
