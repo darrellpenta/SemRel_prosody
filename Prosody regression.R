@@ -691,99 +691,65 @@ sink()
 
 #
 # COEFFICIENTS TABLE-----------------------------------------------------------------------------
+library(ggplot2)
+options(scipen = 999)
 
-data.list = list(
-  pros.d1.i,
-  pros.d1.r,
-  pros.d1.a,
-  pros.d1.ir,
-  pros.d1.ia,
-  res.d1.i,
-  res.d1.r,
-  res.d1.a,
-  res.d1.ir,
-  res.d1.ia,
-  pros.n1.i,
-  pros.n1.r,
-  pros.n1.a,
-  pros.n1.ir,
-  pros.n1.ia,
-  res.n1.i,
-  res.n1.r,
-  res.n1.a,
-  res.n1.ir,
-  res.n1.ia,
-  pros.p1.i,
-  pros.p1.r,
-  pros.p1.a,
-  pros.p1.ir,
-  pros.p1.ia,
-  res.p1.i,
-  res.p1.r,
-  res.p1.a,
-  res.p1.ir,
-  res.p1.ia,
-  pros.d2.i,
-  pros.d2.r,
-  pros.d2.a,
-  pros.d2.ir,
-  pros.d2.ia,
-  res.d2.i,
-  res.d2.r,
-  res.d2.a,
-  res.d2.ir,
-  res.d2.ia,
-  pros.a1.i,
-  pros.a1.r,
-  pros.a1.a,
-  pros.a1.ir,
-  pros.a1.ia,
-  res.a1.i,
-  res.a1.r,
-  res.a1.a,
-  res.a1.ir,
-  res.a1.ia,
-  pros.n2.i,
-  pros.n2.r,
-  pros.n2.a,
-  pros.n2.ir,
-  pros.n2.ia,
-  res.n2.i,
-  res.n2.r,
-  res.n2.a,
-  res.n2.ir,
-  res.n2.ia
-)
-
-
-
-
-aaa<-t(pros.d1.i@beta)
-t(aaa)
-
-fff<- cbind(as.data.frame(t(t(colnames(pros.d1.i@pp$X)))),as.data.frame(t(t(pros.d1.i@beta))))
 
 coeff.table <- data.frame (
-  V1 = c(
-    "(intercept)",
-    "integ",
-    "relat",
-    "assoc",
-    "plaus",
-    "freq",
-    "len.char",
-    "len.phon",
-    "len.syll",
-    "n1.len",
-    "p1.len",
-    "a1.len",
-    "n2.len",
-    "fr.pre.wd",
-    "fr.pos.wd"))
+POS    = rep(c("D1","N1","P1","D2","A1","N2"), each=3),
+Factor = c(rep(c("Integration","Relatedness","Association"), times=6)),
+Beta   = c(
+  co.d1.i<- cbind(as.data.frame(t(t(colnames(res.d1.i@pp$X)))),as.data.frame(t(t(res.d1.i@beta))))[2,2],
+  co.d1.r<- cbind(as.data.frame(t(t(colnames(res.d1.r@pp$X)))),as.data.frame(t(t(res.d1.r@beta))))[2,2],
+  co.d1.a<- cbind(as.data.frame(t(t(colnames(res.d1.a@pp$X)))),as.data.frame(t(t(res.d1.a@beta))))[2,2],
+  co.n1.i<- cbind(as.data.frame(t(t(colnames(res.n1.i@pp$X)))),as.data.frame(t(t(res.n1.i@beta))))[2,2],
+  co.n1.r<- cbind(as.data.frame(t(t(colnames(res.n1.r@pp$X)))),as.data.frame(t(t(res.n1.r@beta))))[2,2],
+  co.n1.a<- cbind(as.data.frame(t(t(colnames(res.n1.a@pp$X)))),as.data.frame(t(t(res.n1.a@beta))))[2,2],
+  co.p1.i<- cbind(as.data.frame(t(t(colnames(res.p1.i@pp$X)))),as.data.frame(t(t(res.p1.i@beta))))[2,2],
+  co.p1.r<- cbind(as.data.frame(t(t(colnames(res.p1.r@pp$X)))),as.data.frame(t(t(res.p1.r@beta))))[2,2],
+  co.p1.a<- cbind(as.data.frame(t(t(colnames(res.p1.a@pp$X)))),as.data.frame(t(t(res.p1.a@beta))))[2,2],
+  co.d2.i<- cbind(as.data.frame(t(t(colnames(res.d2.i@pp$X)))),as.data.frame(t(t(res.d2.i@beta))))[2,2],
+  co.d2.r<- cbind(as.data.frame(t(t(colnames(res.d2.r@pp$X)))),as.data.frame(t(t(res.d2.r@beta))))[2,2],
+  co.d2.a<- cbind(as.data.frame(t(t(colnames(res.d2.a@pp$X)))),as.data.frame(t(t(res.d2.a@beta))))[2,2],
+  co.a1.i<- cbind(as.data.frame(t(t(colnames(res.a1.i@pp$X)))),as.data.frame(t(t(res.a1.i@beta))))[2,2],
+  co.a1.r<- cbind(as.data.frame(t(t(colnames(res.a1.r@pp$X)))),as.data.frame(t(t(res.a1.r@beta))))[2,2],
+  co.a1.a<- cbind(as.data.frame(t(t(colnames(res.a1.a@pp$X)))),as.data.frame(t(t(res.a1.a@beta))))[2,2],
+  co.n2.i<- cbind(as.data.frame(t(t(colnames(res.n2.i@pp$X)))),as.data.frame(t(t(res.n2.i@beta))))[2,2],
+  co.n2.r<- cbind(as.data.frame(t(t(colnames(res.n2.r@pp$X)))),as.data.frame(t(t(res.n2.r@beta))))[2,2],
+  co.n2.a<- cbind(as.data.frame(t(t(colnames(res.n2.a@pp$X)))),as.data.frame(t(t(res.n2.a@beta))))[2,2]))
 
-coeff.table$V1 <- as.factor(coeff.table$V1)
+coeff.table.ir <- subset(coeff.table, Factor != "Association")
 
+# FIGURES
 
-View(all.facs)
+positions <- c("D1","N1","P1","D2","A1","N2")
+dodge  <- position_dodge(width = 0.9)
+g1     <- ggplot(data = coeff.table.ir, aes(x = POS, y = Beta, fill = Factor)) +
+  layer(geom="bar", stat="identity", position = position_dodge()) +
+  scale_x_discrete(limits = positions) +
+theme_classic() +
+geom_hline(yintercept=0)+
+  theme(text = element_text(size=18.5))
+g1
+
+  geom_errorbar(aes(ymax = ErrRate + SE, ymin = ErrRate - SE), position = dodge, width = 0.2)+
+  coord_cartesian(ylim = c(0, 17))+
+
+  theme_classic() +
+  theme(text = element_text(size=18.5)) +
+  ylab("Mismatch effect (%)") +
+  theme(axis.title.y=element_text(vjust=1.5)) +
+  theme(plot.margin = unit(c(1, 1, 4, 1), "lines"), axis.title.x = element_blank(), axis.text.x = element_blank())
+
+#p-value text
+p.text = grobTree(textGrob(expression(paste(italic("*p"),"<.05")), x=0.02,  y=0.90, hjust=0,
+                           gp=gpar(col="black", fontsize=12)))
+g1  <- g1 + annotation_custom(p.text)
+
+# significance grouping bars
+g1  <- g1 + geom_path(aes(group=1), x=c(1.5,1.5,3.5,3.5), y=c(14.5,15.5,15.5,14.5)) +
+  geom_path(aes(group=1), x=c(1,1,2,2), y=c(13.5,14.5,14.5,13.5)) +
+  geom_path(aes(group=1), x=c(3,3,4,4), y=c(13.5,14.5,14.5,13.5)) +
+  annotate("text", x=2.5,y=16,label="*", size=8)
 
 
