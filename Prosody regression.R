@@ -690,7 +690,8 @@ print(summary(res.n2.ia))
 sink()
 
 #
-# COEFFICIENTS TABLE-----------------------------------------------------------------------------
+# COEFFICIENTS TABLE----------------------------------------------------------------------------
+install.packages("ggplot2")
 library(ggplot2)
 options(scipen = 999)
 
@@ -729,27 +730,9 @@ g1     <- ggplot(data = coeff.table.ir, aes(x = POS, y = Beta, fill = Factor)) +
   scale_x_discrete(limits = positions) +
 theme_classic() +
 geom_hline(yintercept=0)+
-  theme(text = element_text(size=18.5))
+  theme(text = element_text(size=18.5)) +
+  ylab("Standardized Coefficients") +
+  theme(axis.title.y=element_text(vjust=1.5))
 g1
 
-  geom_errorbar(aes(ymax = ErrRate + SE, ymin = ErrRate - SE), position = dodge, width = 0.2)+
-  coord_cartesian(ylim = c(0, 17))+
-
-  theme_classic() +
-  theme(text = element_text(size=18.5)) +
-  ylab("Mismatch effect (%)") +
-  theme(axis.title.y=element_text(vjust=1.5)) +
-  theme(plot.margin = unit(c(1, 1, 4, 1), "lines"), axis.title.x = element_blank(), axis.text.x = element_blank())
-
-#p-value text
-p.text = grobTree(textGrob(expression(paste(italic("*p"),"<.05")), x=0.02,  y=0.90, hjust=0,
-                           gp=gpar(col="black", fontsize=12)))
-g1  <- g1 + annotation_custom(p.text)
-
-# significance grouping bars
-g1  <- g1 + geom_path(aes(group=1), x=c(1.5,1.5,3.5,3.5), y=c(14.5,15.5,15.5,14.5)) +
-  geom_path(aes(group=1), x=c(1,1,2,2), y=c(13.5,14.5,14.5,13.5)) +
-  geom_path(aes(group=1), x=c(3,3,4,4), y=c(13.5,14.5,14.5,13.5)) +
-  annotate("text", x=2.5,y=16,label="*", size=8)
-
-
+ggsave("figures/Coefficients figure.png")
