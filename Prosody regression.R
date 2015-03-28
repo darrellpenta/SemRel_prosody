@@ -375,16 +375,15 @@ g1     <- ggplot(data = coeff.table.1.ir, aes(x = POS, y = Beta, fill = Factor))
   theme(axis.title.y=element_text(vjust=1.5)) +
   ggtitle("Coefficients by Part of Speech (No Residuals)") +
   theme(plot.title = element_text(lineheight=3, face="bold", color="black", size=15))
-p.text = grobTree(textGrob(expression(paste(italic("**p"),"<.05, ", italic("*p"),"<.10")), x=0.02,  y=0.09, hjust=0,  gp=gpar(col="black", fontsize=12)))
+p.text = grobTree(textGrob(expression(paste(italic("**p"),"<.05, ", italic("*p"),"<.10")), x=0.02,  y=0.09, hjust=0,  gp=gpar(col="black", fontsize=14)))
 g1  <- g1 + annotation_custom(p.text) +
   annotate("text", x = 2.225, y = .00475,  label = "*", size = 8)  +
   annotate("text", x = 4.775, y = -.00655, label = "*", size = 8) +
-  annotate("text", x = 5.225, y = -.00605, label =" *", size = 8)
+  annotate("text", x = 5.200, y = -.00605, label =" *", size = 8)
 g1
-
-
-
 ggsave("figures/Coefficients X Part of Speech (No Residuals).png")
+
+
 positions <- c("D1","N1","P1","D2","A1","N2")
 dodge  <- position_dodge(width = 0.9)
 g3     <- ggplot(data = coeff.table.3, aes(x = POS, y = Beta, fill = Factor)) +
@@ -397,7 +396,7 @@ g3     <- ggplot(data = coeff.table.3, aes(x = POS, y = Beta, fill = Factor)) +
   theme(axis.title.y=element_text(vjust=1.5)) +
   ggtitle("Coefficients by Part of Speech\n(No Residuals) (Fixed Effects: Int. & Rel.)") +
   theme(plot.title = element_text(size=17, face="bold", vjust=1, lineheight=0.95))
-p.text = grobTree(textGrob(expression(paste(italic("**p"),"<.05, ", italic("*p"),"<.10")), x=0.02,  y=0.09, hjust=0,  gp=gpar(col="black", fontsize=12)))
+p.text = grobTree(textGrob(expression(paste(italic("**p"),"<.05, ", italic("*p"),"<.10")), x=0.02,  y=0.09, hjust=0,  gp=gpar(col="black", fontsize=14)))
 g3  <- g3 + annotation_custom(p.text) +
   annotate("text", x = 2.225, y = .011, label = "**", size = 8)+
   annotate("text", x = 3.225, y = .0055, label = "*",  size = 8)+
@@ -867,7 +866,7 @@ g2     <- ggplot(data = coeff.table.2.ir, aes(x = POS, y = Beta, fill = Factor))
   theme(axis.title.y=element_text(vjust=1.5))+
   ggtitle("Coefficients by Part of Speech") +
   theme(plot.title = element_text(size=17, face="bold", vjust=1, lineheight=0.9))
-p.text = grobTree(textGrob(expression(paste(italic("***p"),"<.01")), x=0.02,  y=0.9, hjust=0,  gp=gpar(col="black", fontsize=12)))
+p.text = grobTree(textGrob(expression(paste(italic("***p"),"<.01")), x=0.02,  y=0.09, hjust=0,  gp=gpar(col="black", fontsize=14)))
   g2  <- g2 + annotation_custom(p.text) +
   annotate("text", x = 2.775, y = .0062, label = "***", size = 8)
 g2
@@ -886,14 +885,14 @@ g4     <- ggplot(data = coeff.table.4, aes(x = POS, y = Beta, fill = Factor)) +
   theme(axis.title.y=element_text(vjust=1.5)) +
   ggtitle("Coefficients by Part of Speech\n (Fixed Effects: Int. & Rel.)") +
   theme(plot.title = element_text(size=17, face="bold", vjust=1, lineheight=0.95))
-p.text = grobTree(textGrob(expression(paste(italic("***p"),"<.01, ",italic("**p"),"<.05,",italic("*p"), "<.10")), x=0.8,  y=0.9, hjust=0,  gp=gpar(col="black", fontsize=12)))
+p.text = grobTree(textGrob(expression(paste(italic("***p"),"<.01, ",italic("**p"),"<.05,",italic("*p"), "<.10")), x=0.02,  y=0.09, hjust=0,  gp=gpar(col="black", fontsize=14))))
 g4  <- g4 + annotation_custom(p.text) +
   annotate("text", x = 2.225, y = .0055, label = "**", size = 8) +
   annotate("text", x = 2.775, y = .0235, label = "***", size = 8) +
-  annotate("text", x = 3.225, y = -.022, label = "***", size = 8) +
-  annotate("text", x = 3.775, y = -.0045, label = "*", size = 8) +
-  annotate("text", x = 4.225, y = .0045, label = "**", size = 8)
+  annotate("text", x = 3.225, y = -.0220, label = "***", size = 8) +
+  annotate("text", x = 3.775, y = -.00475, label = "*", size = 8) +
+  annotate("text", x = 4.225, y = .004, label = "**", size = 8)
 g4
 ggsave("figures/Coefficients X Part of Speech (Fixed Effects: Int. & Rel.).png")
-g4
+
 
