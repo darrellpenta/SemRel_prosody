@@ -885,7 +885,7 @@ g4     <- ggplot(data = coeff.table.4, aes(x = POS, y = Beta, fill = Factor)) +
   theme(axis.title.y=element_text(vjust=1.5)) +
   ggtitle("Coefficients by Part of Speech\n (Fixed Effects: Int. & Rel.)") +
   theme(plot.title = element_text(size=17, face="bold", vjust=1, lineheight=0.95))
-p.text = grobTree(textGrob(expression(paste(italic("***p"),"<.01, ",italic("**p"),"<.05,",italic("*p"), "<.10")), x=0.02,  y=0.09, hjust=0,  gp=gpar(col="black", fontsize=14))))
+p.text = grobTree(textGrob(expression(paste(italic("***p"),"<.01, ",italic("**p"),"<.05,",italic("*p"), "<.10")), x=0.02,  y=0.09, hjust=0,  gp=gpar(col="black", fontsize=14)))
 g4  <- g4 + annotation_custom(p.text) +
   annotate("text", x = 2.225, y = .0055, label = "**", size = 8) +
   annotate("text", x = 2.775, y = .0235, label = "***", size = 8) +

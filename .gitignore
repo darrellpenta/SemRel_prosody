@@ -11,3 +11,5 @@ output/SemRel Prosody Analyses.txt
 figures/correlation_matrix.png
 
 output/SemRel Prosody Analyses-Residuals.txt
+
+*.png
