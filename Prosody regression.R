@@ -416,7 +416,7 @@ print(summary(pros.n2.ir.si))
 #                     cor(d.base$seconds, d.base$a1.len,  use = "complete"),
 #                     cor(d.base$seconds, d.base$n2.len,  use = "complete")))
 # print(ind.cor)
-# sink()
+ sink()
 
 # COEFFICIENTS TABLE----------------------------------------------------------------------------
 library(ggplot2)
@@ -499,8 +499,8 @@ coeff.table.6 <- data.frame (
 
 # FIGURES: Betas by part of speech ----------------------------------
 
-positions <- c("D1","N1","P1","D2","A1","N2")
-dodge <- position_dodge(width = 0.9)
+
+
 g1   <- ggplot(data = coeff.table.1, aes(x = POS, y = Beta, fill = Factor)) +
  layer(geom="bar", stat="identity", position = position_dodge()) +
  scale_x_discrete(limits = positions) +
@@ -521,8 +521,6 @@ ggsave("figures/Coefficients X Part of Speech (No Residuals).png", scale=1.5)
 g1
 
 
-positions <- c("D1","N1","P1","D2","A1","N2")
-dodge <- position_dodge(width = 0.9)
 g5   <- ggplot(data = coeff.table.5, aes(x = POS, y = Beta, fill = Factor)) +
   layer(geom="bar", stat="identity", position = position_dodge()) +
   scale_x_discrete(limits = positions) +
@@ -542,8 +540,6 @@ ggsave("figures/Coefficients X Part of Speech (No Residuals) -Random Slopes .png
 
 
 
-positions <- c("D1","N1","P1","D2","A1","N2")
-dodge <- position_dodge(width = 0.9)
 g3   <- ggplot(data = coeff.table.3, aes(x = POS, y = Beta, fill = Factor)) +
  layer(geom="bar", stat="identity", position = position_dodge()) +
  scale_x_discrete(limits = positions) +
@@ -565,8 +561,6 @@ g3
 
 
 
-positions <- c("D1","N1","P1","D2","A1","N2")
-dodge <- position_dodge(width = 0.9)
 g6   <- ggplot(data = coeff.table.3, aes(x = POS, y = Beta, fill = Factor)) +
   layer(geom="bar", stat="identity", position = position_dodge()) +
   scale_x_discrete(limits = positions) +
@@ -595,36 +589,38 @@ coeff.all <- rbind(coeff.table.1,coeff.table.5)
 coeff.all <- rbind(coeff.all, coeff.table.3)
 coeff.all <- rbind(coeff.all, coeff.table.6)
 
-positions <- c("D1","N1","P1","D2","A1","N2")
-dodge <- position_dodge(width = .9)
+
 g.all <- ggplot() +
-  geom_bar(data = coeff.all, aes(x = POS, y = Beta, fill = Factor, order=Factor), stat = "identity",position = position_dodge(), width=0.8) +
-  scale_fill_manual(values=rep(c("#4c4cff","#7f7fff", "#b2b2ff","#e5e5ff", "#ff4500", "#ff6a32", "#ff8f66",  "#ffb499"), times=6)) +
+  geom_bar(data = coeff.all, aes(x = POS, y = Beta, fill = Factor, order=Factor), stat = "identity",position = position_dodge(), width=1, colour="black") +
+  scale_fill_manual(values=rep(c("#ff4500", "#ff6a32", "#ff8f66",  "#ffb499","#4c4cff","#7f7fff", "#b2b2ff","#e5e5ff"), times=6)) +
   scale_x_discrete(limits = positions) +
-  # theme_classic() +
+  theme(panel.background =element_rect(fill = "white")) +
   geom_hline(yintercept=0)+
-  theme(text = element_text(size=18.5)) +
+  theme_bw()+
+  theme(text = element_text(size=18.5), panel.grid.major.y = element_line(color="#333333", linetype = "solid", size=0.1), panel.grid.major.x = element_line(color="black", linetype = "solid", size=0.02)) +
   ylab("Standardized Coefficients") +
   theme(axis.title.y=element_text(vjust=1.5)) +
-  ggtitle("All models") +
+  ggtitle("All Non-Residual models") +
+  guides(fill = guide_legend(override.aes = list(colour = NULL)))  +
+  theme(legend.key = element_rect(colour = "black")) +
   theme(plot.title = element_text(size=15, face="bold", vjust=1, lineheight=0.95)) +
   scale_y_continuous(limits=c(-.01575,.01575), breaks=c(-.015, -.010, -.005, 0, .005, .01, .015))
-p.text = grobTree(textGrob(expression(paste(italic("**p"),"<.05, ", italic("*p"),"<.10")), x=Inf, y=-Inf, hjust=1, gp=gpar(col="black", fontsize=14)))
 g.all <- g.all + annotation_custom(p.text) +
-  annotate("text", x = 2.05, y = .005, label = "*", size = 8)+
-  annotate("text", x = 2.15, y = .011, label = "**", size = 8)+
-  annotate("text", x = 2.25, y = .01050, label = "*", size = 8)+
-   annotate("text", x = 2.05, y = -.014, label = "**p<.05,*p<.10", size = 5)+
-  annotate("text", x = 4.65575, y = -.006725, label = "*", size = 8)+
-  annotate("text", x = 5.0525, y = -.00625, label = "*", size = 8)+
-  annotate("text", x = 3.15, y = .0055, label = "*", size = 8)+
-  annotate("text", x = 6.16, y = -.01555, label = "*", size = 8)
+  annotate("text", x = 2.44, y = .00488, label = "*", size = 8)+
+  annotate("text", x = 2.0578, y = .00495, label = "*", size = 8)+
+  annotate("text", x = 2.175, y = .01086, label = "**", size = 8)+
+  annotate("text", x = 2.32, y = .01046, label = "*", size = 8)+
+  annotate("text", x = 1.05, y = -.014, label = "**p<.05,*p<.10", size = 5)+
+  annotate("text", x = 4.570, y = -.006705, label = "*", size = 8)+
+  annotate("text", x = 5.07, y = -.00625, label = "*", size = 8)+
+  annotate("text", x = 3.18, y = .0055, label = "*", size = 8)+
+  annotate("text", x = 6.19, y = -.0154, label = "*", size = 8)
 g.all
 ggsave("figures/ Coefficients X Part of Speech- All Models.png", scale=2)
 
 
 
-#install.packages("gridExtra")
+# install.packages("gridExtra")
 require(gridExtra)
 library(gridExtra)
 
