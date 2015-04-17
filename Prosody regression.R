@@ -75,7 +75,7 @@ print(summary(pros.d1.i))
 cat(rep(c("-"), times = 40, quote = F),"\n")
 cat("SUBSET D1 (Integration) Local Nuisance Factors ", sep = "", fill = 60)
 cat(rep(c("-"), times = 40, quote = F), "\n")
-pros.d1.i.lnf <- lmer(seconds ~ integ + plaus + fr.pos.wd + (1|subject) + (1|item), data = d.d1, REML = TRUE)
+pros.d1.i.lnf <- lmer(seconds ~ integ + plaus + + n1.len + fr.pos.wd + (1|subject) + (1|item), data = d.d1, REML = TRUE)
 print(summary(pros.d1.i.lnf))
 
 cat(rep(c("-"), times = 40, quote = F),"\n")
@@ -87,7 +87,7 @@ print(summary(pros.d1.r))
 cat(rep(c("-"), times = 40, quote = F),"\n")
 cat("SUBSET D1 (Relatedness) Local Nuisance Factors ", sep = "", fill = 60)
 cat(rep(c("-"), times = 40, quote = F), "\n")
-pros.d1.r.lnf <- lmer(seconds ~ relat + plaus  + fr.pos.wd + (1|subject) + (1|item), data = d.d1, REML = TRUE)
+pros.d1.r.lnf <- lmer(seconds ~ relat + plaus + n1.len + fr.pos.wd + (1|subject) + (1|item), data = d.d1, REML = TRUE)
 print(summary(pros.d1.r.lnf))
 
 # cat(rep(c("-"), times = 40, quote = F),"\n")
@@ -106,7 +106,7 @@ print(summary(pros.d1.ir))
 cat(rep(c("-"), times = 40, quote = F),"\n")
 cat("SUBSET D1 (Integration with Related Local Nuisance Factors )", sep = "", fill = 60)
 cat(rep(c("-"), times = 40, quote = F), "\n")
-pros.d1.ir.lnf <- lmer(seconds ~ relat + integ + plaus +  fr.pos.wd + (1|subject) + (1|item), data = d.d1, REML = TRUE)
+pros.d1.ir.lnf <- lmer(seconds ~ relat + integ + plaus + n1.len + fr.pos.wd + (1|subject) + (1|item), data = d.d1, REML = TRUE)
 print(summary(pros.d1.ir.lnf))
 
 # cat(rep(c("-"), times = 40, quote = F),"\n")
@@ -127,7 +127,7 @@ print(summary(pros.n1.i))
 cat(rep(c("\n"), times = 2), rep(c("-"), times = 40, quote = F),"\n")
 cat("SUBSET N1 (Integration) Local Nuisance Factors ", sep = "", fill = 60)
 cat(rep(c("-"), times = 40, quote = F), "\n")
-pros.n1.i.lnf <- lmer(seconds ~ integ + plaus + freq + len.char + len.phon + len.syll + fr.pos.wd + (1 |subject) + (1  |item), data = d.n1, REML = TRUE)
+pros.n1.i.lnf <- lmer(seconds ~ integ + plaus + freq + len.char + len.phon + len.syll + p1.len + fr.pos.wd + (1 |subject) + (1  |item), data = d.n1, REML = TRUE)
 print(summary(pros.n1.i.lnf))
 
 cat(rep(c("\n"), times = 2), rep(c("-"), times = 40, quote = F),"\n")
@@ -139,7 +139,7 @@ print(summary(pros.n1.r))
 cat(rep(c("\n"), times = 2), rep(c("-"), times = 40, quote = F),"\n")
 cat("SUBSET N1 (Relatedness) Local Nuisance Factors ", sep = "", fill = 60)
 cat(rep(c("-"), times = 40, quote = F), "\n")
-pros.n1.r.lnf <- lmer(seconds ~ relat + plaus + freq + len.char + len.phon + len.syll +  fr.pos.wd + (1|subject) + (1|item), data = d.n1, REML = TRUE)
+pros.n1.r.lnf <- lmer(seconds ~ relat + plaus + freq + len.char + len.phon + len.syll +  p1.len +  fr.pos.wd + (1|subject) + (1|item), data = d.n1, REML = TRUE)
 print(summary(pros.n1.r.lnf))
 
 # cat(rep(c("\n"), times = 2), rep(c("-"), times = 40, quote = F),"\n")
@@ -158,7 +158,7 @@ print(summary(pros.n1.ir))
 cat(rep(c("\n"), times = 2), rep(c("-"), times = 40, quote = F),"\n")
 cat("SUBSET N1 (Integration with Related Local Nuisance Factors )", sep = "", fill = 60)
 cat(rep(c("-"), times = 40, quote = F), "\n")
-pros.n1.ir.lnf <- lmer(seconds ~ relat + integ + plaus + freq + len.char + len.phon + len.syll + fr.pos.wd + (1 |subject) + (1 |item), data = d.n1, REML = TRUE)
+pros.n1.ir.lnf <- lmer(seconds ~ relat + integ + plaus + freq + len.char + len.phon + len.syll +  p1.len +  fr.pos.wd + (1 |subject) + (1 |item), data = d.n1, REML = TRUE)
 print(summary(pros.n1.ir.lnf))
 
 # cat(rep(c("-"), times = 40, quote = F),"\n")
@@ -178,7 +178,7 @@ print(summary(pros.p1.i))
 cat(rep(c("\n"), times = 2), rep(c("-"), times = 40, quote = F),"\n")
 cat("SUBSET P1 (Integration) Local Nuisance Factors ", sep = "", fill = 60)
 cat(rep(c("-"), times = 40, quote = F), "\n")
-pros.p1.i.lnf <- lmer(seconds ~ integ + plaus + freq + len.char + len.phon +  fr.pre.wd + (1|subject) + (1|item), data = d.p1, REML = TRUE)
+pros.p1.i.lnf <- lmer(seconds ~ integ + plaus + freq + len.char + len.phon + n1.len + fr.pre.wd + (1|subject) + (1|item), data = d.p1, REML = TRUE)
 print(summary(pros.p1.i.lnf))
 
 cat(rep(c("\n"), times = 2), rep(c("-"), times = 40, quote = F),"\n")
@@ -190,7 +190,7 @@ print(summary(pros.p1.r))
 cat(rep(c("\n"), times = 2), rep(c("-"), times = 40, quote = F),"\n")
 cat("SUBSET P1 (Relatedness) Local Nuisance Factors ", sep = "", fill = 60)
 cat(rep(c("-"), times = 40, quote = F), "\n")
-pros.p1.r.lnf <- lmer(seconds ~ relat + plaus + freq + len.char + len.phon +  fr.pre.wd + (1|subject) + (1 |item), data = d.p1, REML = TRUE)
+pros.p1.r.lnf <- lmer(seconds ~ relat + plaus + freq + len.char + len.phon + n1.len + fr.pre.wd + (1|subject) + (1 |item), data = d.p1, REML = TRUE)
 print(summary(pros.p1.r.lnf))
 
 #
@@ -209,7 +209,7 @@ print(summary(pros.p1.ir))
 cat(rep(c("\n"), times = 2), rep(c("-"), times = 40, quote = F),"\n")
 cat("SUBSET P1 (Integration with Related) Local Nuisance Factors ", sep = "", fill = 60)
 cat(rep(c("-"), times = 40, quote = F), "\n")
-pros.p1.ir.lnf <- lmer(seconds ~ relat + integ + plaus + freq + len.char + len.phon + fr.pre.wd + (1 |subject) + (1 |item), data = d.p1, REML = TRUE)
+pros.p1.ir.lnf <- lmer(seconds ~ relat + integ + plaus + freq + len.char + len.phon + n1.len +fr.pre.wd + (1 |subject) + (1 |item), data = d.p1, REML = TRUE)
 print(summary(pros.p1.ir.lnf))
 
 # cat(rep(c("-"), times = 40, quote = F),"\n")
@@ -228,7 +228,7 @@ print(summary(pros.d2.i))
 cat(rep(c("\n"), times = 2), rep(c("-"), times = 40, quote = F),"\n")
 cat("SUBSET D2 (Integration) Local Nuisance Factors ", sep = "", fill = 60)
 cat(rep(c("-"), times = 40, quote = F), "\n")
-pros.d2.i.lnf <- lmer(seconds ~ integ + plaus +  fr.pre.wd + fr.pos.wd + (1|subject) + (1|item), data = d.d2, REML = TRUE)
+pros.d2.i.lnf <- lmer(seconds ~ integ + plaus + p1.len + a1.len +  fr.pre.wd + fr.pos.wd + (1|subject) + (1|item), data = d.d2, REML = TRUE)
 print(summary(pros.d2.i.lnf))
 
 cat(rep(c("\n"), times = 2), rep(c("-"), times = 40, quote = F),"\n")
@@ -240,7 +240,7 @@ print(summary(pros.d2.r))
 cat(rep(c("\n"), times = 2), rep(c("-"), times = 40, quote = F),"\n")
 cat("SUBSET D2 (Relatedness) Local Nuisance Factors ", sep = "", fill = 60)
 cat(rep(c("-"), times = 40, quote = F), "\n")
-pros.d2.r.lnf <- lmer(seconds ~ relat + plaus + fr.pre.wd + fr.pos.wd + (1 |subject) + (1|item), data = d.d2, REML = TRUE)
+pros.d2.r.lnf <- lmer(seconds ~ relat + plaus + p1.len + a1.len + fr.pre.wd + fr.pos.wd + (1 |subject) + (1|item), data = d.d2, REML = TRUE)
 print(summary(pros.d2.r.lnf))
 
 #
@@ -259,7 +259,7 @@ print(summary(pros.d2.ir))
 cat(rep(c("\n"), times = 2), rep(c("-"), times = 40, quote = F),"\n")
 cat("SUBSET D2 (Integration with Related) Local Nuisance Factors ", sep = "", fill = 60)
 cat(rep(c("-"), times = 40, quote = F), "\n")
-pros.d2.ir.lnf <- lmer(seconds ~ relat + integ + plaus + fr.pre.wd + fr.pos.wd + (1 |subject) + (1 |item), data = d.d2, REML = TRUE)
+pros.d2.ir.lnf <- lmer(seconds ~ relat + integ + plaus + p1.len + a1.len + fr.pre.wd + fr.pos.wd + (1 |subject) + (1 |item), data = d.d2, REML = TRUE)
 print(summary(pros.d2.ir.lnf))
 
 # cat(rep(c("-"), times = 40, quote = F),"\n")
@@ -278,7 +278,7 @@ print(summary(pros.a1.i))
 cat(rep(c("\n"), times = 2), rep(c("-"), times = 40, quote = F),"\n")
 cat("SUBSET A1 (Integration) Local Nuisance Factors ", sep = "", fill = 60)
 cat(rep(c("-"), times = 40, quote = F), "\n")
-pros.a1.i.lnf <- lmer(seconds ~ integ + plaus + freq + len.char + len.phon + len.syll + fr.pos.wd + (1|subject) + (1|item), data = d.a1, REML = TRUE)
+pros.a1.i.lnf <- lmer(seconds ~ integ + plaus + freq + len.char + len.phon + len.syll + n2.len + fr.pos.wd + (1|subject) + (1|item), data = d.a1, REML = TRUE)
 print(summary(pros.a1.i.lnf))
 
 cat(rep(c("\n"), times = 2), rep(c("-"), times = 40, quote = F),"\n")
@@ -290,7 +290,7 @@ print(summary(pros.a1.r))
 cat(rep(c("\n"), times = 2), rep(c("-"), times = 40, quote = F),"\n")
 cat("SUBSET A1 (Relatedness) Local Nuisance Factors ", sep = "", fill = 60)
 cat(rep(c("-"), times = 40, quote = F), "\n")
-pros.a1.r.lnf <- lmer(seconds ~ relat + plaus + freq + len.char + len.phon + len.syll  + fr.pos.wd + (1 |subject) + (1 |item), data = d.a1, REML = TRUE)
+pros.a1.r.lnf <- lmer(seconds ~ relat + plaus + freq + len.char + len.phon + len.syll  + n2.len + fr.pos.wd + (1 |subject) + (1 |item), data = d.a1, REML = TRUE)
 print(summary(pros.a1.r.lnf))
 
 # cat(rep(c("-"), times = 40, quote = F),"\n")
@@ -310,7 +310,7 @@ print(summary(pros.a1.ir))
 cat(rep(c("\n"), times = 2), rep(c("-"), times = 40, quote = F),"\n")
 cat("SUBSET A1 (Integration with Related) Local Nuisance Factors & Intercept", sep = "", fill = 60)
 cat(rep(c("-"), times = 40, quote = F), "\n")
-pros.a1.ir.lnf <- lmer(seconds ~ relat + integ + plaus + freq + len.char + len.phon + len.syll + fr.pos.wd + (1 |subject) + (1 |item), data = d.a1, REML = TRUE)
+pros.a1.ir.lnf <- lmer(seconds ~ relat + integ + plaus + freq + len.char + len.phon + len.syll + n2.len + fr.pos.wd + (1 |subject) + (1 |item), data = d.a1, REML = TRUE)
 print(summary(pros.a1.ir.lnf))
 
 # cat(rep(c("-"), times = 40, quote = F),"\n")
@@ -329,7 +329,7 @@ print(summary(pros.n2.i))
 cat(rep(c("\n"), times = 2), rep(c("-"), times = 40, quote = F),"\n")
 cat("SUBSET N2 (Integration) Local Nuisance Factors ", sep = "", fill = 60)
 cat(rep(c("-"), times = 40, quote = F), "\n")
-pros.n2.i.lnf <- lmer(seconds ~ integ + plaus + freq + len.char + len.phon + len.syll + fr.pre.wd + fr.pos.wd + (1|subject) + (1|item), data = d.n2, REML = TRUE)
+pros.n2.i.lnf <- lmer(seconds ~ integ + plaus + freq + len.char + len.phon + len.syll + a1.len + fr.pre.wd + fr.pos.wd + (1|subject) + (1|item), data = d.n2, REML = TRUE)
 print(summary(pros.n2.i.lnf))
 
 cat(rep(c("\n"), times = 2), rep(c("-"), times = 40, quote = F),"\n")
@@ -341,7 +341,7 @@ print(summary(pros.n2.r))
 cat(rep(c("\n"), times = 2), rep(c("-"), times = 40, quote = F),"\n")
 cat("SUBSET N2 (Relatedness) Local Nuisance Factors ", sep = "", fill = 60)
 cat(rep(c("-"), times = 40, quote = F), "\n")
-pros.n2.r.lnf <- lmer(seconds ~ relat + plaus + freq + len.char + len.phon + len.syll + fr.pre.wd + fr.pos.wd + (1 |subject) + (1 |item), data = d.n2, REML = TRUE)
+pros.n2.r.lnf <- lmer(seconds ~ relat + plaus + freq + len.char + len.phon + len.syll + a1.len + fr.pre.wd + fr.pos.wd + (1 |subject) + (1 |item), data = d.n2, REML = TRUE)
 print(summary(pros.n2.r.lnf))
 
 # cat(rep(c("-"), times = 40, quote = F),"\n")
@@ -359,7 +359,7 @@ print(summary(pros.n2.ir))
 cat(rep(c("\n"), times = 2), rep(c("-"), times = 40, quote = F),"\n")
 cat("SUBSET N2 (Integration with Related) Local Nuisance Factors ", sep = "", fill = 60)
 cat(rep(c("-"), times = 40, quote = F), "\n")
-pros.n2.ir.lnf <- lmer(seconds ~ relat + integ + plaus + freq + len.char + len.phon + len.syll + fr.pre.wd + fr.pos.wd + (1 |subject) + (1 |item), data = d.n2, REML = TRUE)
+pros.n2.ir.lnf <- lmer(seconds ~ relat + integ + plaus + freq + len.char + len.phon + len.syll + a1.len + fr.pre.wd + fr.pos.wd + (1 |subject) + (1 |item), data = d.n2, REML = TRUE)
 print(summary(pros.n2.ir.lnf))
 
 # cat(rep(c("-"), times = 40, quote = F),"\n")
@@ -536,7 +536,7 @@ g5   <- ggplot(data = coeff.table.5, aes(x = POS, y = Beta, fill = Factor)) +
   theme(plot.title = element_text(face="bold", color="black", size=15, lineheight=0.95))
 g5 <- g5 + annotation_custom(p.text) +
       annotate("text", x = 2.225, y = .005, label = "*", size = 8) +
-      annotate("text", x = 4.775, y = -.007, label = "*", size = 8) +
+      annotate("text", x = 4.775, y = -.00795, label = "*", size = 8) +
       scale_y_continuous(limits=c(-.018,.018), breaks=c(-.015, -.010, -.005, 0, .005, .01, .015))
 g5
 ggsave("figures/Coefficients X Part of Speech (No Residuals) Local Nuisance Factors .png", scale=1.5)
@@ -567,7 +567,7 @@ g3
 
 
 
-g6   <- ggplot(data = coeff.table.3, aes(x = POS, y = Beta, fill = Factor)) +
+g6   <- ggplot(data = coeff.table.6, aes(x = POS, y = Beta, fill = Factor)) +
   layer(geom="bar", stat="identity", position = position_dodge()) +
   scale_x_discrete(limits = positions) +
   theme_classic() +
@@ -579,10 +579,10 @@ g6   <- ggplot(data = coeff.table.3, aes(x = POS, y = Beta, fill = Factor)) +
   theme(plot.title = element_text(size=15, face="bold", vjust=1, lineheight=0.95))
 
 g6 <- g6 + annotation_custom(p.text) +
-          annotate("text", x = 2.225, y = .011, label = "*", size = 8) +
-          annotate("text", x = 3.225, y = .0065, label = "\u2020", size = 6) +
-          annotate("text", x = 6.225, y = -.0155, label = "*", size = 8) +
-          scale_y_continuous(limits=c(-.018,.018), breaks=c(-.015, -.010, -.005, 0, .005, .01, .015))
+          annotate("text", x = 2.225, y = .01025, label = "*", size = 8) +
+          annotate("text", x = 3.225, y = .00620, label = "\u2020", size = 6) +
+          annotate("text", x = 6.225, y = -.0185, label = "*", size = 8) +
+          scale_y_continuous(limits=c(-.019,.019), breaks=c(-.015, -.010, -.005, 0, .005, .01, .015))
 ggsave("figures/Coefficients X Part of Speech (No Residuals) (Fixed Effects: Integ & Relat) Local Nuisance Factors.png", scale=1.5)
 g6
 
@@ -612,26 +612,26 @@ g.all <- ggplot() +
   guides(fill = guide_legend(override.aes = list(colour = NULL)))  +
   theme(legend.key = element_rect(colour = "black")) +
   theme(plot.title = element_text(size=15, face="bold", vjust=1, lineheight=0.95)) +
-  scale_y_continuous(limits=c(-.018,.018), breaks=c(-.015, -.010, -.005, 0, .005, .01, .015))
+  scale_y_continuous(limits=c(-.019,.019), breaks=c(-.015, -.010, -.005, 0, .005, .01, .015))
 
 g.all <- g.all +
  annotation_custom(p.text) +
  annotate("text", x = 2.0625, y = .00525,  label = "\u2020", size = 6) +
- annotate("text", x = 2.1875, y = .011,    label = "*",      size = 8) +
- annotate("text", x = 2.3125, y = .00925,  label = "*",      size = 8) +
+ annotate("text", x = 2.1875, y = .0109,    label = "*",      size = 8) +
+ annotate("text", x = 2.3125, y = .01025,  label = "*",      size = 8) +
  annotate("text", x = 2.4375, y = .00525,  label = "*",      size = 8) +
  annotate("text", x = 3.1875, y = .006,    label = "\u2020", size = 6) +
  annotate("text", x = 3.3125, y = .00555,  label = "\u2020", size = 6) +
- annotate("text", x = 4.5625, y = -.00665, label = "\u2020", size = 6) +
- annotate("text", x = 4.9375, y = -.00665, label = "\u2020", size = 6) +
+ annotate("text", x = 4.5625, y = -.00695, label = "\u2020", size = 6) +
+ annotate("text", x = 4.9375, y = -.00765, label = "\u2020", size = 6) +
  annotate("text", x = 5.0625, y = -.00625, label = "\u2020", size = 6) +
  annotate("text", x = 6.1875, y = -.0154,  label = "\u2020", size = 6) +
- annotate("text", x = 6.3125, y = -.01775,  label = "*",      size = 8)
-g.all
+ annotate("text", x = 6.3125, y = -.0185,  label = "*",      size = 8)
+ggsave("figures/Coefficients X Part of Speech- All Models w Nuisance Factors.png", scale=1.25)
+g6
 
 
-
-ggsave("figures/ Coefficients X Part of Speech- All Models w/ Nuisance Factors.png", scale=2)
+ggsave("figures/Coefficients X Part of Speech- All Models w/ Nuisance Factors.png", scale=2)
 
 
 
@@ -640,9 +640,11 @@ require(gridExtra)
 library(gridExtra)
 
 g.comp <- arrangeGrob((rbind(ggplotGrob(g1), ggplotGrob(g5), ggplotGrob(g3), ggplotGrob(g6),size="last")))
-
+grid.draw(g.comp)
+g.comp
 png(filename = "figures/Compare Models (with Local Nuisance Factors).png")
 grid.draw(g.comp)
+
 dev.off()
 
 
