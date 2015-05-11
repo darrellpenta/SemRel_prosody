@@ -1,0 +1,31 @@
+1. Open > Read from file > FILE
+
+Adding a text grid
+-Make sure file is selected
+1. Annotate > To text grid
+-”All tier names:” This is the name for the tear (used “Words” for Semrel)
+-”Which...” is left blank
+2. OK
+
+View and Edit
+-select both
+1. View and Edit
+
+Tab will play file
+
+
+Adding word 	boundaries
+Cmd + 1
+-Listen to the surrounding boundaries too to make sure you’re not cutting things off
+-Don’t change the speed of playback (says Liz)
+
+Annotate--
+Just click on segment, and when it’s yellow, annotate away
+1. WE use words for Tier 1, then Tier > Duplicate; select POS (the new Tier), Tier > Remove all text from Tier
+2. Add D1, etc.
+
+Saving
+-when done annotating, use command S to save text grid
+
+Open TG
+-select, use List > OK
